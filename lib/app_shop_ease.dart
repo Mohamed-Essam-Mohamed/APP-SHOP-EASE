@@ -6,6 +6,7 @@ import 'package:app_shop_ease/core/utils/app_light_theme.dart';
 import 'package:app_shop_ease/core/common/screens/internet_screen.dart';
 import 'package:app_shop_ease/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppShopEase extends StatefulWidget {
