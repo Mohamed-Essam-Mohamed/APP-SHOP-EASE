@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:app_shop_ease/app_shop_ease.dart';
-import 'package:app_shop_ease/core/app/check_internet.dart';
 import 'package:app_shop_ease/core/app/env_variables.dart';
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
 import 'package:app_shop_ease/core/enums/env_type_enum.dart';

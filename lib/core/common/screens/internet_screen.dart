@@ -1,9 +1,8 @@
-import 'package:app_shop_ease/app_shop_ease.dart';
+import 'package:app_shop_ease/core/constant/app_assets.dart';
 import 'package:app_shop_ease/core/utils/app_color.dart';
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +17,7 @@ class InternetScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Image.asset(
-            "assets/icons/icon-internet.png",
+            AppAssets.iconInternet,
             width: 180.w,
             height: 180.h,
             fit: BoxFit.contain,

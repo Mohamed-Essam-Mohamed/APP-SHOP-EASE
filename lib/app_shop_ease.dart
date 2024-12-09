@@ -1,10 +1,10 @@
-import 'dart:developer';
-
 import 'package:app_shop_ease/core/app/check_internet.dart';
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
+import 'package:app_shop_ease/core/routes/app_routes.dart';
 import 'package:app_shop_ease/core/utils/app_dark_theme.dart';
 import 'package:app_shop_ease/core/utils/app_light_theme.dart';
-import 'package:app_shop_ease/core/widget/internet_screen.dart';
+import 'package:app_shop_ease/core/common/screens/internet_screen.dart';
+import 'package:app_shop_ease/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,24 +30,29 @@ class _AppShopEaseState extends State<AppShopEase> {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: AppLightTheme.theme,
-          darkTheme: AppDarkTheme.theme,
-          themeMode: ThemeMode.light,
-          home: ValueListenableBuilder(
-            valueListenable: CheckInternet.isConnected,
-            builder: (_, value, __) {
-              if (value) {
-                return const Scaffold(
-                  body: Center(child: Text("Yes internet")),
-                );
-              } else {
-                return const InternetScreen();
-              }
-            },
-          ),
+        return ValueListenableBuilder(
+          valueListenable: CheckInternet.isConnected,
+          builder: (_, value, __) {
+            if (value) {
+              return MaterialApp(
+                title: 'Flutter Demo',
+                debugShowCheckedModeBanner: false,
+                theme: AppLightTheme.theme,
+                darkTheme: AppDarkTheme.theme,
+                themeMode: ThemeMode.light,
+                initialRoute: HomeScreen.routeName,
+                onGenerateRoute: AppRoutes.onGenerateRoute,
+              );
+            } else {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: AppLightTheme.theme,
+                darkTheme: AppDarkTheme.theme,
+                themeMode: ThemeMode.light,
+                home: const InternetScreen(),
+              );
+            }
+          },
         );
       },
     );
