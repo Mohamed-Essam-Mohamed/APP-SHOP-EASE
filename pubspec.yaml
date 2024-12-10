@@ -25,6 +25,7 @@ dependencies:
   flutter_svg: ^2.0.16
   google_fonts: ^6.2.1
   animate_do: ^3.3.4
+  shared_preferences: ^2.3.3
 
 dev_dependencies:
   flutter_test:

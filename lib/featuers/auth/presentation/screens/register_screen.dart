@@ -58,7 +58,9 @@ class RegisterScreen extends StatelessWidget {
             Gap(32.h),
             BounceInDown(
               from: 15,
-              child: ButtonAppWidget(onPressed: () {}, title: "Sign up"),
+              child: ButtonAppWidget(
+                  onPressed: () {},
+                  title: AppLocalizations.of(context)!.signUp),
             ),
             Gap(32.h),
             BounceInDown(
