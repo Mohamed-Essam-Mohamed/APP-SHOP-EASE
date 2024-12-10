@@ -1,0 +1,18 @@
+{
+    "hello" : "Hello",
+    "signUp" : "Sign Up",
+    "login" : "Login",
+    "forgetPassword" : "Forget Password",
+    "email" : "Email",
+    "password" : "Password",
+    "confirmPassword" : "Confirm Password",
+    "firstName" : "First Name",
+    "lastName" : "Last Name",
+    "phone" : "Phone",
+    "address" : "Address",
+    "city" : "City",
+    "country" : "Country",
+    "continue_with_google" : "Continue with Google",
+    "continue_with_facebook" : "Continue with Facebook"
+    
+}

@@ -7,6 +7,7 @@ import 'package:app_shop_ease/core/common/screens/internet_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/hello_auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppShopEase extends StatefulWidget {
   const AppShopEase({super.key});
@@ -42,6 +43,8 @@ class _AppShopEaseState extends State<AppShopEase> {
                 themeMode: ThemeMode.light,
                 initialRoute: HelloAuthScreen.routeName,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocalizations.supportedLocales,
               );
             } else {
               return MaterialApp(

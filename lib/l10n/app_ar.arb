@@ -1,0 +1,17 @@
+{
+    "hello": "مرحبًا",
+    "signUp": "إنشاء حساب",
+    "login": "تسجيل الدخول",
+    "forgetPassword": "نسيت كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "phone": "رقم الهاتف",
+    "address": "العنوان",
+    "city": "المدينة",
+    "country": "البلد",
+    "continue_with_google": "المتابعة باستخدام Google",
+    "continue_with_facebook": "المتابعة باستخدام Facebook"
+}
