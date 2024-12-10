@@ -4,9 +4,8 @@ import 'package:app_shop_ease/core/routes/app_routes.dart';
 import 'package:app_shop_ease/core/utils/app_dark_theme.dart';
 import 'package:app_shop_ease/core/utils/app_light_theme.dart';
 import 'package:app_shop_ease/core/common/screens/internet_screen.dart';
-import 'package:app_shop_ease/home_screen.dart';
+import 'package:app_shop_ease/featuers/auth/presentation/screens/hello_auth_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppShopEase extends StatefulWidget {
@@ -41,7 +40,7 @@ class _AppShopEaseState extends State<AppShopEase> {
                 theme: AppLightTheme.theme,
                 darkTheme: AppDarkTheme.theme,
                 themeMode: ThemeMode.light,
-                initialRoute: HomeScreen.routeName,
+                initialRoute: HelloAuthScreen.routeName,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
               );
             } else {

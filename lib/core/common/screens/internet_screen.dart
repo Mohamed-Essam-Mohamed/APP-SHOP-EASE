@@ -28,7 +28,7 @@ class InternetScreen extends StatelessWidget {
           Text(
             "No Internet Connection",
             textAlign: TextAlign.center,
-            style: AppTextStyle.bodySmall,
+            style: AppTextStyle.textStyle16CP,
           ),
           Gap(10.h),
           Text(
