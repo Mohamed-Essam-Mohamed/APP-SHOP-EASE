@@ -23,15 +23,19 @@ class ButtonAppWidget extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.r),
-        side: const BorderSide(
-          color: AppColor.primaryColor,
+        side: BorderSide(
+          color: Theme.of(context).primaryColor,
         ),
       ),
-      color: isFilled ? AppColor.primaryColor : AppColor.secondaryColor,
+      color: isFilled
+          ? Theme.of(context).primaryColor
+          : Theme.of(context).canvasColor,
       child: Text(
         title,
         style: AppTextStyle.textStyle16CP.copyWith(
-            color: isFilled ? AppColor.secondaryColor : AppColor.primaryColor),
+            color: isFilled
+                ? Theme.of(context).cardColor
+                : Theme.of(context).primaryColor),
       ),
     );
   }

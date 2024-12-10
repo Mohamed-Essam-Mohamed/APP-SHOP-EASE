@@ -45,6 +45,7 @@ class _AppShopEaseState extends State<AppShopEase> {
                 onGenerateRoute: AppRoutes.onGenerateRoute,
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
+                locale: const Locale('en'),
               );
             } else {
               return MaterialApp(
