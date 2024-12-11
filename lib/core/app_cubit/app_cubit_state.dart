@@ -8,3 +8,7 @@ abstract class AppCubitState extends Equatable {
 }
 
 class AppCubitInitial extends AppCubitState {}
+
+class AppChangeLangToAR extends AppCubitState {}
+
+class AppChangeLangToEN extends AppCubitState {}

@@ -1,4 +1,5 @@
 {
+    "app_lang" :"English",
     "hello": "مرحبًا",
     "signUp": "إنشاء حساب",
     "login": "تسجيل الدخول",

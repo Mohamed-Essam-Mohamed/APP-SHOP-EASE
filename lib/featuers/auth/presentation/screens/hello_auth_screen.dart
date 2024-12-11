@@ -1,15 +1,18 @@
+import 'dart:developer';
+
 import 'package:animate_do/animate_do.dart';
+import 'package:app_shop_ease/core/app_cubit/app_cubit_cubit.dart';
 import 'package:app_shop_ease/core/common/widget/button_app_widget.dart';
 import 'package:app_shop_ease/core/extensions/context_extention.dart';
-import 'package:app_shop_ease/core/utils/app_color.dart';
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/login_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/register_screen.dart';
+import 'package:app_shop_ease/featuers/auth/presentation/widget/button_lang_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HelloAuthScreen extends StatelessWidget {
@@ -18,7 +21,27 @@ class HelloAuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = BlocProvider.of<AppCubitCubit>(context);
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          cubit.lang == 'en'
+              ? FadeInRight(
+                  child: ButtonLangWidget(
+                    onTap: () {
+                      cubit.changeLang();
+                    },
+                  ),
+                )
+              : FadeInLeft(
+                  child: ButtonLangWidget(
+                    onTap: () {
+                      cubit.changeLang();
+                    },
+                  ),
+                ),
+        ],
+      ),
       body: Center(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 16.w),

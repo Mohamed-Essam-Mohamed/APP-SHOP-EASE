@@ -1,11 +1,13 @@
 import 'package:app_shop_ease/core/app/check_internet.dart';
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
+import 'package:app_shop_ease/core/app_cubit/app_cubit_cubit.dart';
 import 'package:app_shop_ease/core/routes/app_routes.dart';
 import 'package:app_shop_ease/core/utils/app_dark_theme.dart';
 import 'package:app_shop_ease/core/utils/app_light_theme.dart';
 import 'package:app_shop_ease/core/common/screens/internet_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/hello_auth_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -24,41 +26,50 @@ class _AppShopEaseState extends State<AppShopEase> {
     super.initState();
   }
 
+  AppCubitCubit cubit = AppCubitCubit();
+
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, child) {
-        return ValueListenableBuilder(
-          valueListenable: CheckInternet.isConnected,
-          builder: (_, value, __) {
-            if (value) {
-              return MaterialApp(
-                title: 'Flutter Demo',
-                debugShowCheckedModeBanner: false,
-                theme: AppLightTheme.theme,
-                darkTheme: AppDarkTheme.theme,
-                themeMode: ThemeMode.light,
-                initialRoute: HelloAuthScreen.routeName,
-                onGenerateRoute: AppRoutes.onGenerateRoute,
-                localizationsDelegates: AppLocalizations.localizationsDelegates,
-                supportedLocales: AppLocalizations.supportedLocales,
-                locale: const Locale('ar'),
+    return BlocProvider<AppCubitCubit>(
+      create: (context) => cubit,
+      child: BlocBuilder<AppCubitCubit, AppCubitState>(
+        builder: (context, state) {
+          return ScreenUtilInit(
+            designSize: const Size(360, 690),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (_, child) {
+              return ValueListenableBuilder(
+                valueListenable: CheckInternet.isConnected,
+                builder: (_, value, __) {
+                  if (value) {
+                    return MaterialApp(
+                      debugShowCheckedModeBanner: false,
+                      theme: AppLightTheme.theme,
+                      darkTheme: AppDarkTheme.theme,
+                      themeMode: ThemeMode.light,
+                      initialRoute: HelloAuthScreen.routeName,
+                      onGenerateRoute: AppRoutes.onGenerateRoute,
+                      localizationsDelegates:
+                          AppLocalizations.localizationsDelegates,
+                      supportedLocales: AppLocalizations.supportedLocales,
+                      locale: Locale(cubit.lang as String),
+                    );
+                  } else {
+                    return MaterialApp(
+                      debugShowCheckedModeBanner: false,
+                      theme: AppLightTheme.theme,
+                      darkTheme: AppDarkTheme.theme,
+                      themeMode: ThemeMode.light,
+                      home: const InternetScreen(),
+                    );
+                  }
+                },
               );
-            } else {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: AppLightTheme.theme,
-                darkTheme: AppDarkTheme.theme,
-                themeMode: ThemeMode.light,
-                home: const InternetScreen(),
-              );
-            }
-          },
-        );
-      },
+            },
+          );
+        },
+      ),
     );
   }
 }
