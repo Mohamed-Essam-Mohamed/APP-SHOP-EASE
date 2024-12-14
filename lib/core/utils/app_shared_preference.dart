@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:app_shop_ease/featuers/auth/data/model/response/user_data_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesUtils {
@@ -26,5 +29,26 @@ class SharedPreferencesUtils {
 
   static Object? getData({required String key}) {
     return sharedPreferences.get(key);
+  }
+
+  // Save user data to SharedPreferences
+  static Future<void> savePref(UserDataResponse user) async {
+    String userJson = jsonEncode(user.toJson());
+    await sharedPreferences.setString('user_data', userJson);
+  }
+
+  // Retrieve user data from SharedPreferences
+  static Future<UserDataResponse?> getFromPref() async {
+    String? userJson = sharedPreferences.getString('user_data');
+    if (userJson != null) {
+      Map<String, dynamic> userMap = jsonDecode(userJson);
+      return UserDataResponse.fromJson(userMap);
+    }
+    return null;
+  }
+
+  // Clear user data from SharedPreferences
+  static Future<void> clearPref() async {
+    await sharedPreferences.remove('user_data');
   }
 }

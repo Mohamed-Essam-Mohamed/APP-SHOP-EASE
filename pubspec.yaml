@@ -26,6 +26,8 @@ dependencies:
   google_fonts: ^6.2.1
   animate_do: ^3.3.4
   shared_preferences: ^2.3.3
+  dartz: ^0.10.1
+  dio: ^5.7.0
 
 dev_dependencies:
   flutter_test:

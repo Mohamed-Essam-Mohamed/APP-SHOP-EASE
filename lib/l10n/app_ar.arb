@@ -16,4 +16,10 @@
     "continue_with_facebook": "المتابعة باستخدام Facebook",
     "already_have_account" : "بالفعل لدي حساب ؟",
     "dont_have_account" : "ليس لديك حساب ؟"
+    ,"enter_valid_email" : " عليك إدخال الايميل بشكل صحيح"
+    ,"enter_valid_password" : " عليك أدخال كلمة المرور بشكل صحيح"
+    ,"enter_valid_name" : "الاسم غير صالح",
+    "loading" : "جاري التحميل",
+    "error" : "خطأ",
+    "success" : "تم بنجاح"
 }

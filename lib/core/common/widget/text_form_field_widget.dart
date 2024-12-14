@@ -30,6 +30,7 @@ class TextFormFieldWidget extends StatelessWidget {
         ),
         Gap(10.h),
         TextFormField(
+          textDirection: TextDirection.ltr,
           controller: controller,
           validator: validator,
           decoration: InputDecoration(
@@ -42,6 +43,7 @@ class TextFormFieldWidget extends StatelessWidget {
             focusedBorder: _outlineInputBorder(context, null),
             enabledBorder: _outlineInputBorder(context, null),
             errorBorder: _outlineInputBorder(context, AppColor.redColor),
+            focusedErrorBorder: _outlineInputBorder(context, AppColor.redColor),
           ),
         )
       ],

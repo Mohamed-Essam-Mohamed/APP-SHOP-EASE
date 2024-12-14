@@ -6,6 +6,7 @@ import 'package:app_shop_ease/core/utils/app_dark_theme.dart';
 import 'package:app_shop_ease/core/utils/app_light_theme.dart';
 import 'package:app_shop_ease/core/common/screens/internet_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/hello_auth_screen.dart';
+import 'package:app_shop_ease/featuers/user/presentation/screens/app_init_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

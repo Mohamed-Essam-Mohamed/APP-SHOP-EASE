@@ -21,5 +21,21 @@ class AppLightTheme {
         color: AppColor.primaryColor,
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      showUnselectedLabels: true,
+      selectedItemColor: AppColor.primaryColor,
+      enableFeedback: true,
+      // showSelectedLabels: true,
+      elevation: 0,
+
+      selectedIconTheme: IconThemeData(
+        size: 25.sp,
+      ),
+      unselectedIconTheme: IconThemeData(
+        size: 21.sp,
+      ),
+      unselectedItemColor: AppColor.grayAppColor,
+    ),
   );
 }
