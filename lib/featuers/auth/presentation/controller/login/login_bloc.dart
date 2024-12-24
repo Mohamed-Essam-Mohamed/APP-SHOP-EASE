@@ -21,10 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({required this.authRepository}) : super(LoginStateInitial()) {
     on<LoginAppEvent>((event, emit) async {
       if (formKey.currentState!.validate()) {
-        log('Form validation passed');
-
         emit(LoginStateLoading());
-        log('State emitted: LoginStateLoading');
 
         // Await the login operation
         var eitherLogin = await authRepository.login(
@@ -37,13 +34,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         await eitherLogin.fold(
           (ifLeft) async {
             emit(LoginStateError(ifLeft.message));
-            log('State emitted: LoginStateError');
           },
           (responseLogin) async {
             String token = responseLogin.data!.login!.accessToken!;
-            // Await user data response
             var eitherUserData = await authRepository.userDataResponse(token);
-
             await eitherUserData.fold(
               (ifLeft) async {
                 emit(LoginStateError(ifLeft.message));

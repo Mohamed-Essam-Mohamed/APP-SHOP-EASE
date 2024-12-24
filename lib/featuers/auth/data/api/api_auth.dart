@@ -5,7 +5,9 @@ import 'package:app_shop_ease/core/services/api/constant_api/constant_api.dart';
 import 'package:app_shop_ease/core/services/api/dio_helper/api_consumer.dart';
 import 'package:app_shop_ease/featuers/auth/data/graphql/auth_queries.dart';
 import 'package:app_shop_ease/featuers/auth/data/model/request/login_request.dart';
+import 'package:app_shop_ease/featuers/auth/data/model/request/regsiter_request.dart';
 import 'package:app_shop_ease/featuers/auth/data/model/response/login_response.dart';
+import 'package:app_shop_ease/featuers/auth/data/model/response/resgister_response.dart';
 import 'package:app_shop_ease/featuers/auth/data/model/response/user_data_response.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -42,6 +44,24 @@ class AuthApi {
         "$baseUrl/api/v1/auth/profile",
       );
       return Right(UserDataResponse.fromJson(response.data));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.toString()));
+    } on SocketException catch (e) {
+      return Left(ServerFailure(e.toString()));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  Future<Either<Failure, RegisterResponse>> register(
+      {required RegisterRequest request}) async {
+    try {
+      final response = await dio.post(
+        graphql,
+        data: authQueries.registerQuery(request: request),
+      );
+
+      return Right(RegisterResponse.fromJson(response));
     } on ServerException catch (e) {
       return Left(ServerFailure(e.toString()));
     } on SocketException catch (e) {

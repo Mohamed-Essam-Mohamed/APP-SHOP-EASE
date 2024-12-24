@@ -4,7 +4,7 @@ import 'package:app_shop_ease/featuers/admin/presentation/screens/admin_home_scr
 import 'package:app_shop_ease/featuers/auth/presentation/screens/hello_auth_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/login_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/register_screen.dart';
-import 'package:app_shop_ease/featuers/user/presentation/screens/app_init_screen.dart';
+import 'package:app_shop_ease/featuers/customer/presentation/screens/app_init_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -16,7 +16,7 @@ class AppRoutes {
       case LoginScreen.routeName:
         return AnimationRoute(page: LoginScreen());
       case RegisterScreen.routeName:
-        return AnimationRoute(page: const RegisterScreen());
+        return AnimationRoute(page: RegisterScreen());
       case AppInitScreen.routeName:
         return AnimationRoute(page: const AppInitScreen());
       case AdminHomeScreen.routeName:

@@ -28,6 +28,9 @@ dependencies:
   shared_preferences: ^2.3.3
   dartz: ^0.10.1
   dio: ^5.7.0
+  image_picker: ^1.1.2
+  permission_handler: ^11.3.1
+  device_info_plus: ^11.2.0
 
 dev_dependencies:
   flutter_test:

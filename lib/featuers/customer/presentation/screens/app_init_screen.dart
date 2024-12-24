@@ -1,8 +1,8 @@
 import 'package:app_shop_ease/core/utils/app_color.dart';
-import 'package:app_shop_ease/featuers/user/presentation/screens/cart_screen.dart';
-import 'package:app_shop_ease/featuers/user/presentation/screens/favourite_screen.dart';
-import 'package:app_shop_ease/featuers/user/presentation/screens/home_screen.dart';
-import 'package:app_shop_ease/featuers/user/presentation/screens/profile_screen.dart';
+import 'package:app_shop_ease/featuers/customer/presentation/screens/cart_screen.dart';
+import 'package:app_shop_ease/featuers/customer/presentation/screens/favourite_screen.dart';
+import 'package:app_shop_ease/featuers/customer/presentation/screens/home_screen.dart';
+import 'package:app_shop_ease/featuers/customer/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

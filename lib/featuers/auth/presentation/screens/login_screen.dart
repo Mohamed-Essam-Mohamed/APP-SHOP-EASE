@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:animate_do/animate_do.dart';
-import 'package:app_shop_ease/app_shop_ease.dart';
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
 import 'package:app_shop_ease/core/common/widget/button_app_widget.dart';
 import 'package:app_shop_ease/core/extensions/context_extention.dart';
@@ -10,8 +7,7 @@ import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/admin_home_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/controller/login/login_bloc.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/register_screen.dart';
-import 'package:app_shop_ease/featuers/user/presentation/screens/app_init_screen.dart';
-import 'package:app_shop_ease/featuers/user/presentation/screens/home_screen.dart';
+import 'package:app_shop_ease/featuers/customer/presentation/screens/app_init_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

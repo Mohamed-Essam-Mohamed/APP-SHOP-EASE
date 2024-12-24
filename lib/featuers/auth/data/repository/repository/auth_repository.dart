@@ -1,6 +1,8 @@
 import 'package:app_shop_ease/core/errors/failure.dart';
 import 'package:app_shop_ease/featuers/auth/data/model/request/login_request.dart';
+import 'package:app_shop_ease/featuers/auth/data/model/request/regsiter_request.dart';
 import 'package:app_shop_ease/featuers/auth/data/model/response/login_response.dart';
+import 'package:app_shop_ease/featuers/auth/data/model/response/resgister_response.dart';
 import 'package:app_shop_ease/featuers/auth/data/model/response/user_data_response.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
@@ -21,6 +23,12 @@ class AuthRepository extends Equatable {
     String token,
   ) async {
     return await authDataSource.userDataResponse(token);
+  }
+
+  Future<Either<Failure, RegisterResponse>> register({
+    required RegisterRequest request,
+  }) async {
+    return await authDataSource.register(request: request);
   }
 
   @override

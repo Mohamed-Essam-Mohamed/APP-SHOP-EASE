@@ -6,6 +6,7 @@ import 'package:app_shop_ease/featuers/auth/data/graphql/auth_queries.dart';
 import 'package:app_shop_ease/featuers/auth/data/repository/data_source/auth_data_source.dart';
 import 'package:app_shop_ease/featuers/auth/data/repository/repository/auth_repository.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/controller/login/login_bloc.dart';
+import 'package:app_shop_ease/featuers/auth/presentation/controller/register/register_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -39,6 +40,9 @@ class ServicesLocator {
     );
     sl.registerFactory<LoginBloc>(
       () => LoginBloc(authRepository: sl()),
+    );
+    sl.registerFactory<RegisterBloc>(
+      () => RegisterBloc(authRepository: sl()),
     );
   }
 }
