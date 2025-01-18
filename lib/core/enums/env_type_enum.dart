@@ -1,0 +1,4 @@
+enum EnvTypeEnum {
+  dev,
+  prod,
+}

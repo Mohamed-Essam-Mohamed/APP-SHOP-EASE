@@ -1,0 +1,26 @@
+{
+    "app_lang" :"English",
+    "hello": "مرحبًا",
+    "signUp": "إنشاء حساب",
+    "login": "تسجيل الدخول",
+    "forgetPassword": "نسيت كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "name": "الاسم",
+    "phone": "رقم الهاتف",
+    "address": "العنوان",
+    "city": "المدينة",
+    "country": "البلد",
+    "continue_with_google": "المتابعة باستخدام Google",
+    "continue_with_facebook": "المتابعة باستخدام Facebook",
+    "already_have_account" : "بالفعل لدي حساب ؟",
+    "dont_have_account" : "ليس لديك حساب ؟"
+    ,"enter_valid_email" : " عليك إدخال الايميل بشكل صحيح"
+    ,"enter_valid_password" : " عليك أدخال كلمة المرور بشكل صحيح"
+    ,"enter_valid_name" : "الاسم غير صالح",
+    "loading" : "جاري التحميل",
+    "error" : "خطأ",
+    "success" : "تم بنجاح"
+}
+

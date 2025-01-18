@@ -1,0 +1,27 @@
+{
+    "app_lang" :"العربية" ,
+    "hello" : "Hello!",
+    "signUp" : "Sign Up",
+    "login" : "Login",
+    "forgetPassword" : "Forget Password",
+    "email" : "Email",
+    "password" : "Password",
+    "confirmPassword" : "Confirm Password",
+    "name" : "Name",
+  
+    "phone" : "Phone",
+    "address" : "Address",
+    "city" : "City",
+    "country" : "Country",
+    "continue_with_google" : "Continue with Google",
+    "continue_with_facebook" : "Continue with Facebook",
+    "already_have_account" : "Already have an account ?"
+    ,"dont_have_account" : "Don't have an account ?"
+    ,"enter_valid_email" : "Please enter your email"
+    ,"enter_valid_password" : "Please enter your password"
+    ,"enter_valid_name" : "Enter valid name",
+    "loading" : "Loading",
+    "error" : "Error",
+    "success" : "Success"
+    
+}
