@@ -14,9 +14,9 @@ final sl = GetIt.instance;
 
 class ServicesLocator {
   Future<void> init() async {
-    sl.registerLazySingleton<EnvVariables>(
-      () => EnvVariables(),
-    );
+    // sl.registerLazySingleton<EnvVariables>(
+    //   () => EnvVariables(),
+    // );
     sl.registerFactory<CheckInternet>(
       () => CheckInternet(),
     );
