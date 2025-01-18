@@ -8,12 +8,12 @@ import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/login_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/register_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/widget/button_lang_widget.dart';
+import 'package:app_shop_ease/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HelloAuthScreen extends StatelessWidget {
   const HelloAuthScreen({super.key});
@@ -61,7 +61,7 @@ class HelloAuthScreen extends StatelessWidget {
               Gap(24.h),
               FadeInLeft(
                 child: Text(
-                  AppLocalizations.of(context)!.hello,
+                  S.of(context).hello,
                   textAlign: TextAlign.center,
                   style: AppTextStyle.textStyle60CP,
                 ),
@@ -75,7 +75,7 @@ class HelloAuthScreen extends StatelessWidget {
                       RegisterScreen.routeName,
                     );
                   },
-                  title: AppLocalizations.of(context)!.signUp,
+                  title: S.of(context).signUp,
                 ),
               ),
               Gap(24.h),
@@ -88,7 +88,7 @@ class HelloAuthScreen extends StatelessWidget {
                       LoginScreen.routeName,
                     );
                   },
-                  title: AppLocalizations.of(context)!.login,
+                  title: S.of(context).login,
                 ),
               ),
             ],

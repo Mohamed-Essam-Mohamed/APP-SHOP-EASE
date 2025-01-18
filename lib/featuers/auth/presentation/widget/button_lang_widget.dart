@@ -1,6 +1,6 @@
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
+import 'package:app_shop_ease/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ButtonLangWidget extends StatelessWidget {
@@ -30,7 +30,7 @@ class ButtonLangWidget extends StatelessWidget {
           ],
         ),
         child: Text(
-          AppLocalizations.of(context)!.app_lang,
+          S.of(context).app_lang,
           style: AppTextStyle.textStyle16CP.copyWith(
             color: Theme.of(context).canvasColor,
           ),

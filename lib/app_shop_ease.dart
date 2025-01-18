@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:app_shop_ease/core/app/check_internet.dart';
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
 import 'package:app_shop_ease/core/app_cubit/app_cubit_cubit.dart';
@@ -8,8 +10,10 @@ import 'package:app_shop_ease/core/common/screens/internet_screen.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/hello_auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'generated/l10n.dart';
 
 class AppShopEase extends StatefulWidget {
   const AppShopEase({super.key});
@@ -50,9 +54,13 @@ class _AppShopEaseState extends State<AppShopEase> {
                       themeMode: ThemeMode.light,
                       initialRoute: HelloAuthScreen.routeName,
                       onGenerateRoute: AppRoutes.onGenerateRoute,
-                      localizationsDelegates:
-                          AppLocalizations.localizationsDelegates,
-                      supportedLocales: AppLocalizations.supportedLocales,
+                      localizationsDelegates: [
+                        S.delegate,
+                        GlobalMaterialLocalizations.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        GlobalCupertinoLocalizations.delegate,
+                      ],
+                      supportedLocales: S.delegate.supportedLocales,
                       locale: Locale(cubit.lang as String),
                     );
                   } else {
@@ -61,9 +69,13 @@ class _AppShopEaseState extends State<AppShopEase> {
                       theme: AppLightTheme.theme,
                       darkTheme: AppDarkTheme.theme,
                       themeMode: ThemeMode.light,
-                      localizationsDelegates:
-                          AppLocalizations.localizationsDelegates,
-                      supportedLocales: AppLocalizations.supportedLocales,
+                      localizationsDelegates: [
+                        S.delegate,
+                        GlobalMaterialLocalizations.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        GlobalCupertinoLocalizations.delegate,
+                      ],
+                      supportedLocales: S.delegate.supportedLocales,
                       locale: Locale(cubit.lang as String),
                       home: const InternetScreen(),
                     );

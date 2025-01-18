@@ -8,9 +8,9 @@ import 'package:app_shop_ease/featuers/admin/presentation/screens/admin_home_scr
 import 'package:app_shop_ease/featuers/auth/presentation/controller/login/login_bloc.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/register_screen.dart';
 import 'package:app_shop_ease/featuers/customer/presentation/screens/app_init_screen.dart';
+import 'package:app_shop_ease/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context)!.login,
+          S.of(context)!.login,
         ),
       ),
       body: SingleChildScrollView(
@@ -37,8 +37,7 @@ class LoginScreen extends StatelessWidget {
             listener: (context, state) {
               if (state is LoginStateLoading) {
                 AppDialog.showLoading(
-                    context: context,
-                    message: AppLocalizations.of(context)!.loading);
+                    context: context, message: S.of(context).loading);
               }
               if (state is LoginStateError) {
                 context.pop();
@@ -51,7 +50,7 @@ class LoginScreen extends StatelessWidget {
               if (state is LoginStateSuccess) {
                 // AppDialog.showMessage(
                 //     context: context,
-                //     message: AppLocalizations.of(context)!.success_login);
+                //     message: S.of(context)!.success_login);
                 // Navigator.pushNamed(context, RegisterScreen.routeName);
                 context.pop();
 
@@ -75,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                     BounceInDown(
                       from: 15,
                       child: TextFormFieldWidget(
-                        title: AppLocalizations.of(context)!.email,
+                        title: S.of(context).email,
                         hintText: 'mohamed@gmail.com',
                         controller:
                             BlocProvider.of<LoginBloc>(context).emailController,
@@ -83,8 +82,7 @@ class LoginScreen extends StatelessWidget {
                           if (value != null &&
                               value.isEmpty &&
                               !value.contains('@')) {
-                            return AppLocalizations.of(context)!
-                                .enter_valid_email;
+                            return S.of(context).enter_valid_email;
                           }
                           return null;
                         },
@@ -94,14 +92,13 @@ class LoginScreen extends StatelessWidget {
                     BounceInDown(
                       from: 15,
                       child: TextFormFieldWidget(
-                        title: AppLocalizations.of(context)!.password,
+                        title: S.of(context).password,
                         hintText: '***********',
                         controller: BlocProvider.of<LoginBloc>(context)
                             .passwordController,
                         validator: (value) {
                           if (value != null && value.isEmpty) {
-                            return AppLocalizations.of(context)!
-                                .enter_valid_password;
+                            return S.of(context).enter_valid_password;
                           }
                           return null;
                         },
@@ -115,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                           BlocProvider.of<LoginBloc>(context)
                               .add(LoginAppEvent());
                         },
-                        title: AppLocalizations.of(context)!.login,
+                        title: S.of(context).login,
                       ),
                     ),
                     Gap(32.h),
@@ -126,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                           context.pushNamed(RegisterScreen.routeName);
                         },
                         child: Text(
-                          AppLocalizations.of(context)!.dont_have_account,
+                          S.of(context).dont_have_account,
                           style: AppTextStyle.textStyle16CP
                               .copyWith(color: Colors.blue),
                         ),
