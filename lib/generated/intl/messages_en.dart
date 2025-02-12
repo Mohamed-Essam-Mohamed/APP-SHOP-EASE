@@ -22,37 +22,42 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "address": MessageLookupByLibrary.simpleMessage("Address"),
-        "already_have_account":
-            MessageLookupByLibrary.simpleMessage("Already have an account ?"),
-        "app_lang": MessageLookupByLibrary.simpleMessage("العربية"),
-        "city": MessageLookupByLibrary.simpleMessage("City"),
-        "confirmPassword":
-            MessageLookupByLibrary.simpleMessage("Confirm Password"),
-        "continue_with_facebook":
-            MessageLookupByLibrary.simpleMessage("Continue with Facebook"),
-        "continue_with_google":
-            MessageLookupByLibrary.simpleMessage("Continue with Google"),
-        "country": MessageLookupByLibrary.simpleMessage("Country"),
-        "dont_have_account":
-            MessageLookupByLibrary.simpleMessage("Don\'t have an account ?"),
-        "email": MessageLookupByLibrary.simpleMessage("Email"),
-        "enter_valid_email":
-            MessageLookupByLibrary.simpleMessage("Please enter your email"),
-        "enter_valid_name":
-            MessageLookupByLibrary.simpleMessage("Enter valid name"),
-        "enter_valid_password":
-            MessageLookupByLibrary.simpleMessage("Please enter your password"),
-        "error": MessageLookupByLibrary.simpleMessage("Error"),
-        "forgetPassword":
-            MessageLookupByLibrary.simpleMessage("Forget Password"),
-        "hello": MessageLookupByLibrary.simpleMessage("Hello!"),
-        "loading": MessageLookupByLibrary.simpleMessage("Loading"),
-        "login": MessageLookupByLibrary.simpleMessage("Login"),
-        "name": MessageLookupByLibrary.simpleMessage("Name"),
-        "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
-        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
-        "success": MessageLookupByLibrary.simpleMessage("Success")
-      };
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "already_have_account": MessageLookupByLibrary.simpleMessage(
+      "Already have an account ?",
+    ),
+    "app_lang": MessageLookupByLibrary.simpleMessage("العربية"),
+    "city": MessageLookupByLibrary.simpleMessage("City"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
+    "continue_with_facebook": MessageLookupByLibrary.simpleMessage(
+      "Continue with Facebook",
+    ),
+    "continue_with_google": MessageLookupByLibrary.simpleMessage(
+      "Continue with Google",
+    ),
+    "country": MessageLookupByLibrary.simpleMessage("Country"),
+    "dont_have_account": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account ?",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "enter_valid_email": MessageLookupByLibrary.simpleMessage(
+      "Please enter your email",
+    ),
+    "enter_valid_name": MessageLookupByLibrary.simpleMessage(
+      "Enter valid name",
+    ),
+    "enter_valid_password": MessageLookupByLibrary.simpleMessage(
+      "Please enter your password",
+    ),
+    "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget Password"),
+    "hello": MessageLookupByLibrary.simpleMessage("Hello!"),
+    "loading": MessageLookupByLibrary.simpleMessage("Loading"),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+    "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "success": MessageLookupByLibrary.simpleMessage("Success"),
+  };
 }

@@ -38,7 +38,7 @@ class SharedPreferencesUtils {
   }
 
   // Retrieve user data from SharedPreferences
-  static Future<UserDataResponse?> getFromPref() async {
+  static Future<UserDataResponse?> getPref() async {
     String? userJson = sharedPreferences.getString('user_data');
     if (userJson != null) {
       Map<String, dynamic> userMap = jsonDecode(userJson);

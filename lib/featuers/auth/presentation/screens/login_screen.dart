@@ -5,6 +5,7 @@ import 'package:app_shop_ease/core/extensions/context_extention.dart';
 import 'package:app_shop_ease/core/utils/app_dailog.dart';
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/admin_home_screen.dart';
+import 'package:app_shop_ease/featuers/auth/data/repository/repository/auth_repository.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/controller/login/login_bloc.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/register_screen.dart';
 import 'package:app_shop_ease/featuers/customer/presentation/screens/app_init_screen.dart';
@@ -26,13 +27,13 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          S.of(context)!.login,
+          S.of(context).login,
         ),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: BlocProvider<LoginBloc>(
-          create: (context) => LoginBloc(authRepository: sl()),
+          create: (context) => sl<LoginBloc>(),
           child: BlocConsumer<LoginBloc, LoginState>(
             listener: (context, state) {
               if (state is LoginStateLoading) {
@@ -46,14 +47,8 @@ class LoginScreen extends StatelessWidget {
                   message: state.message,
                 );
               }
-
               if (state is LoginStateSuccess) {
-                // AppDialog.showMessage(
-                //     context: context,
-                //     message: S.of(context)!.success_login);
-                // Navigator.pushNamed(context, RegisterScreen.routeName);
                 context.pop();
-
                 if (state.role == 'admin') {
                   context.pushNamedAndRemoveUntil(
                     AdminHomeScreen.routeName,
@@ -94,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                       child: TextFormFieldWidget(
                         title: S.of(context).password,
                         hintText: '***********',
+                        isSecureText: true,
                         controller: BlocProvider.of<LoginBloc>(context)
                             .passwordController,
                         validator: (value) {

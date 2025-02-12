@@ -22,37 +22,42 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "address": MessageLookupByLibrary.simpleMessage("العنوان"),
-        "already_have_account":
-            MessageLookupByLibrary.simpleMessage("بالفعل لدي حساب ؟"),
-        "app_lang": MessageLookupByLibrary.simpleMessage("English"),
-        "city": MessageLookupByLibrary.simpleMessage("المدينة"),
-        "confirmPassword":
-            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
-        "continue_with_facebook":
-            MessageLookupByLibrary.simpleMessage("المتابعة باستخدام Facebook"),
-        "continue_with_google":
-            MessageLookupByLibrary.simpleMessage("المتابعة باستخدام Google"),
-        "country": MessageLookupByLibrary.simpleMessage("البلد"),
-        "dont_have_account":
-            MessageLookupByLibrary.simpleMessage("ليس لديك حساب ؟"),
-        "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
-        "enter_valid_email": MessageLookupByLibrary.simpleMessage(
-            " عليك إدخال الايميل بشكل صحيح"),
-        "enter_valid_name":
-            MessageLookupByLibrary.simpleMessage("الاسم غير صالح"),
-        "enter_valid_password": MessageLookupByLibrary.simpleMessage(
-            " عليك أدخال كلمة المرور بشكل صحيح"),
-        "error": MessageLookupByLibrary.simpleMessage("خطأ"),
-        "forgetPassword":
-            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور"),
-        "hello": MessageLookupByLibrary.simpleMessage("مرحبًا"),
-        "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
-        "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-        "name": MessageLookupByLibrary.simpleMessage("الاسم"),
-        "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
-        "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
-        "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
-        "success": MessageLookupByLibrary.simpleMessage("تم بنجاح")
-      };
+    "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+    "already_have_account": MessageLookupByLibrary.simpleMessage(
+      "بالفعل لدي حساب ؟",
+    ),
+    "app_lang": MessageLookupByLibrary.simpleMessage("English"),
+    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور",
+    ),
+    "continue_with_facebook": MessageLookupByLibrary.simpleMessage(
+      "المتابعة باستخدام Facebook",
+    ),
+    "continue_with_google": MessageLookupByLibrary.simpleMessage(
+      "المتابعة باستخدام Google",
+    ),
+    "country": MessageLookupByLibrary.simpleMessage("البلد"),
+    "dont_have_account": MessageLookupByLibrary.simpleMessage(
+      "ليس لديك حساب ؟",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "enter_valid_email": MessageLookupByLibrary.simpleMessage(
+      " عليك إدخال الايميل بشكل صحيح",
+    ),
+    "enter_valid_name": MessageLookupByLibrary.simpleMessage("الاسم غير صالح"),
+    "enter_valid_password": MessageLookupByLibrary.simpleMessage(
+      " عليك أدخال كلمة المرور بشكل صحيح",
+    ),
+    "error": MessageLookupByLibrary.simpleMessage("خطأ"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور"),
+    "hello": MessageLookupByLibrary.simpleMessage("مرحبًا"),
+    "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
+    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "success": MessageLookupByLibrary.simpleMessage("تم بنجاح"),
+  };
 }

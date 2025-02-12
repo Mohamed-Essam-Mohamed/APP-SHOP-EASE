@@ -22,8 +22,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginAppEvent>((event, emit) async {
       if (formKey.currentState!.validate()) {
         emit(LoginStateLoading());
-
-        // Await the login operation
+        //? Await the login operation
         var eitherLogin = await authRepository.login(
           request: LoginRequest(
             email: emailController.text.trim(),

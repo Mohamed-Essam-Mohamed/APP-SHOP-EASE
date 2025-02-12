@@ -21,10 +21,9 @@ class AuthApi {
   }) async {
     try {
       final response = await dio.post(
-        graphql,
+        ConstantApi.graphql,
         data: authQueries.loginQuery(request: request),
       );
-
       return Right(LoginResponse.fromJson(response));
     } on ServerException catch (e) {
       return Left(ServerFailure(e.toString()));
@@ -41,7 +40,7 @@ class AuthApi {
       Dio dio = Dio();
       dio.options.headers['Authorization'] = 'Bearer $token';
       final response = await dio.get(
-        "$baseUrl/api/v1/auth/profile",
+        "${ConstantApi.baseUrl}/api/v1/auth/profile",
       );
       return Right(UserDataResponse.fromJson(response.data));
     } on ServerException catch (e) {
@@ -57,7 +56,7 @@ class AuthApi {
       {required RegisterRequest request}) async {
     try {
       final response = await dio.post(
-        graphql,
+        ConstantApi.graphql,
         data: authQueries.registerQuery(request: request),
       );
 

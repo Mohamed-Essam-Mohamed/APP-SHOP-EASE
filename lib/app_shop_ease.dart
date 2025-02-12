@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
 import 'package:app_shop_ease/core/app/check_internet.dart';
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
 import 'package:app_shop_ease/core/app_cubit/app_cubit_cubit.dart';
@@ -7,7 +9,11 @@ import 'package:app_shop_ease/core/routes/app_routes.dart';
 import 'package:app_shop_ease/core/utils/app_dark_theme.dart';
 import 'package:app_shop_ease/core/utils/app_light_theme.dart';
 import 'package:app_shop_ease/core/common/screens/internet_screen.dart';
+import 'package:app_shop_ease/core/utils/app_shared_preference.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/screens/admin_home_screen.dart';
+import 'package:app_shop_ease/featuers/auth/data/model/response/user_data_response.dart';
 import 'package:app_shop_ease/featuers/auth/presentation/screens/hello_auth_screen.dart';
+import 'package:app_shop_ease/featuers/customer/presentation/screens/app_init_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,7 +22,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'generated/l10n.dart';
 
 class AppShopEase extends StatefulWidget {
-  const AppShopEase({super.key});
+  const AppShopEase({super.key, required this.user});
+  final UserDataResponse? user;
 
   @override
   State<AppShopEase> createState() => _AppShopEaseState();
@@ -27,6 +34,7 @@ class _AppShopEaseState extends State<AppShopEase> {
   @override
   void initState() {
     sl<CheckInternet>().init();
+
     super.initState();
   }
 
@@ -52,7 +60,11 @@ class _AppShopEaseState extends State<AppShopEase> {
                       theme: AppLightTheme.theme,
                       darkTheme: AppDarkTheme.theme,
                       themeMode: ThemeMode.light,
-                      initialRoute: HelloAuthScreen.routeName,
+                      initialRoute: widget.user == null
+                          ? HelloAuthScreen.routeName
+                          : widget.user!.role == 'admin'
+                              ? AdminHomeScreen.routeName
+                              : AppInitScreen.routeName,
                       onGenerateRoute: AppRoutes.onGenerateRoute,
                       localizationsDelegates: [
                         S.delegate,
