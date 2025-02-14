@@ -5,18 +5,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TextFormFieldWidget extends StatelessWidget {
-  const TextFormFieldWidget(
-      {super.key,
-      required this.title,
-      required this.hintText,
-      required this.validator,
-      required this.controller});
+class TextFormFieldWidget extends StatefulWidget {
+  TextFormFieldWidget({
+    super.key,
+    required this.title,
+    required this.hintText,
+    required this.validator,
+    required this.controller,
+    this.isSecureText,
+  });
   final String title;
   final String hintText;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  bool? isSecureText;
 
+  @override
+  State<TextFormFieldWidget> createState() => _TextFormFieldWidgetState();
+}
+
+class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,16 +32,18 @@ class TextFormFieldWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title,
+          widget.title,
           style: AppTextStyle.textStyle22CP,
         ),
         Gap(10.h),
         TextFormField(
           textDirection: TextDirection.ltr,
-          controller: controller,
-          validator: validator,
+          controller: widget.controller,
+          validator: widget.validator,
+          obscureText: widget.isSecureText ?? false,
           decoration: InputDecoration(
-            hintText: hintText,
+            suffixIcon: _secureIcon(),
+            hintText: widget.hintText,
             hintStyle: GoogleFonts.cairo(
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
@@ -57,5 +67,26 @@ class TextFormFieldWidget extends StatelessWidget {
         width: 1,
       ),
     );
+  }
+
+  Widget? _secureIcon() {
+    return widget.isSecureText != null
+        ? GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.isSecureText = !widget.isSecureText!;
+              });
+            },
+            child: widget.isSecureText == false
+                ? const Icon(
+                    Icons.remove_red_eye_outlined,
+                    color: AppColor.grayAppColor,
+                  )
+                : const Icon(
+                    Icons.visibility_off_outlined,
+                    color: AppColor.grayAppColor,
+                  ),
+          )
+        : null;
   }
 }

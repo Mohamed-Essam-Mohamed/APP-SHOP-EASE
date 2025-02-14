@@ -31,9 +31,8 @@ abstract class ApiConsumer {
 
 class DioConsumer implements ApiConsumer {
   final Dio dio;
-
   DioConsumer({required this.dio}) {
-    dio.options.baseUrl = baseUrl;
+    dio.options.baseUrl = ConstantApi.baseUrl;
     dio.interceptors.add(LogInterceptor(
       request: true,
       requestHeader: true,

@@ -24,22 +24,22 @@ class ServicesLocator {
       () => Dio(),
     );
     sl.registerLazySingleton<DioConsumer>(
-      () => DioConsumer(dio: sl()),
+      () => DioConsumer(dio: sl<Dio>()),
     );
     sl.registerLazySingleton<AuthQueries>(
       () => AuthQueries(),
     );
     sl.registerLazySingleton<AuthApi>(
-      () => AuthApi(dio: sl(), authQueries: sl()),
+      () => AuthApi(dio: sl<DioConsumer>(), authQueries: sl<AuthQueries>()),
     );
     sl.registerLazySingleton<AuthDataSource>(
-      () => AuthDataSource(authApi: sl()),
+      () => AuthDataSource(authApi: sl<AuthApi>()),
     );
     sl.registerLazySingleton<AuthRepository>(
-      () => AuthRepository(authDataSource: sl()),
+      () => AuthRepository(authDataSource: sl<AuthDataSource>()),
     );
     sl.registerFactory<LoginBloc>(
-      () => LoginBloc(authRepository: sl()),
+      () => LoginBloc(authRepository: sl<AuthRepository>()),
     );
     sl.registerFactory<RegisterBloc>(
       () => RegisterBloc(authRepository: sl()),

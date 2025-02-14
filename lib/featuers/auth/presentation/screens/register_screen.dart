@@ -61,7 +61,7 @@ class RegisterScreen extends StatelessWidget {
             key: bloc.formKey,
             child: Column(
               children: [
-                Gap(32.h),
+                Gap(20.h),
                 BounceInDown(
                   from: 15,
                   child: TextFormFieldWidget(
@@ -76,12 +76,12 @@ class RegisterScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                Gap(32.h),
+                Gap(10.h),
                 BounceInDown(
                   from: 15,
                   child: TextFormFieldWidget(
                     title: S.of(context).email,
-                    hintText: 'mohamed@gmail.com',
+                    hintText: 'name@gmail.com',
                     controller: bloc.emailController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -91,12 +91,13 @@ class RegisterScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                Gap(32.h),
+                Gap(10.h),
                 BounceInDown(
                   from: 15,
                   child: TextFormFieldWidget(
                     title: S.of(context).password,
                     hintText: '***********',
+                    isSecureText: true,
                     controller: bloc.passwordController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {

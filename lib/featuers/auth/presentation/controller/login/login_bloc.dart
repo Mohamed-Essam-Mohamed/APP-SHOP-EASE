@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:app_shop_ease/featuers/auth/data/model/request/login_request.dart';
@@ -22,8 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginAppEvent>((event, emit) async {
       if (formKey.currentState!.validate()) {
         emit(LoginStateLoading());
-
-        // Await the login operation
+        //? Await the login operation
         var eitherLogin = await authRepository.login(
           request: LoginRequest(
             email: emailController.text.trim(),
