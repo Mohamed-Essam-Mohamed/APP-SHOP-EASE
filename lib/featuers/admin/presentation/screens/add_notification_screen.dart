@@ -10,8 +10,8 @@ class AddNotificationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AdminAppBarWidget(
         isMain: true,
-        backgroundColor: AppColor.grayColor,
-        title: "Shop Ease",
+        backgroundColor: AppColor.secondaryColor,
+        title: "Add Notification",
       ),
       body: Center(
         child: Text("Add Notification"),
