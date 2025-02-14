@@ -17,7 +17,7 @@ class InternetScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Image.asset(
-            AppAssets.iconInternet,
+            AppIconsPng.internet,
             width: 180.w,
             height: 180.h,
             fit: BoxFit.contain,
