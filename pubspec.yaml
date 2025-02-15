@@ -32,6 +32,7 @@ dependencies:
   device_info_plus: ^11.2.0
   flutter_native_splash: ^2.4.4
   flutter_zoom_drawer: ^3.2.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

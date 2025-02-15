@@ -33,14 +33,14 @@ class DioConsumer implements ApiConsumer {
   final Dio dio;
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = ConstantApi.baseUrl;
-    dio.interceptors.add(LogInterceptor(
-      request: true,
-      requestHeader: true,
-      requestBody: true,
-      responseHeader: true,
-      responseBody: true,
-      error: true,
-    )); // print status api in consol
+    // dio.interceptors.add(LogInterceptor(
+    //   request: true,
+    //   requestHeader: true,
+    //   requestBody: true,
+    //   responseHeader: true,
+    //   responseBody: true,
+    //   error: true,
+    // )); // print status api in consol
   }
   @override
   Future get(

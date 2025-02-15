@@ -6,7 +6,7 @@ import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/add_category_screen.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/add_notification_screen.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/add_products_screen.dart';
-import 'package:app_shop_ease/featuers/admin/presentation/screens/dashboard_screen.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/screens/dashboard_ui/dashboard_screen.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/users_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

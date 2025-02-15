@@ -25,8 +25,10 @@ class AdminAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: Colors.transparent,
       title: Text(
         title,
-        style: AppTextStyle.textStyle18CP
-            .copyWith(color: colorText ?? AppColor.primaryColor),
+        style: AppTextStyle.textStyle20CP.copyWith(
+          color: colorText ?? AppColor.primaryColor,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       leading: isMain
           ? IconButton(
@@ -35,7 +37,7 @@ class AdminAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
               },
               icon: const Icon(
                 Icons.menu,
-                color: Colors.white,
+                color: AppColor.primaryColor,
               ),
             )
           : null,

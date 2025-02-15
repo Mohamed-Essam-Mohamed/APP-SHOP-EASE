@@ -10,8 +10,8 @@ class AddProductsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AdminAppBarWidget(
         isMain: true,
-        backgroundColor: AppColor.grayColor,
-        title: "Shop Ease",
+        backgroundColor: AppColor.secondaryColor,
+        title: "Add Products Screen",
       ),
       body: Center(
         child: Text("Add Products Screen"),

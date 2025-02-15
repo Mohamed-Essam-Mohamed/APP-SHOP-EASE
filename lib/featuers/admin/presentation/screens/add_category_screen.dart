@@ -10,8 +10,8 @@ class AddCategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AdminAppBarWidget(
         isMain: true,
-        backgroundColor: AppColor.grayColor,
-        title: "Shop Ease",
+        backgroundColor: AppColor.secondaryColor,
+        title: "Add Category",
       ),
       body: const Center(
         child: Text("Add Category"),

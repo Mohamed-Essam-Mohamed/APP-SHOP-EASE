@@ -11,4 +11,8 @@ abstract class AppIconsPng {
 
 abstract class AppIconsSvg {}
 
-abstract class AppImagesPng {}
+abstract class AppImagesPng {
+  static const String categories = "assets/images/categories_drawer.png";
+  static const String products = "assets/images/products_drawer.png";
+  static const String users = "assets/images/users_drawer.png";
+}
