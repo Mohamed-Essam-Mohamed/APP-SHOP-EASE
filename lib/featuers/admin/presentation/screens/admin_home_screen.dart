@@ -4,7 +4,7 @@ import 'package:app_shop_ease/core/common/widget/admin_drawer_list_widget.dart';
 import 'package:app_shop_ease/core/constant/app_assets.dart';
 import 'package:app_shop_ease/core/utils/app_color.dart';
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
-import 'package:app_shop_ease/featuers/admin/presentation/screens/dashboard_screen.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/screens/dashboard_ui/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
