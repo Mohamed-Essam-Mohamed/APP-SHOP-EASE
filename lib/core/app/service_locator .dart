@@ -1,9 +1,14 @@
 import 'package:app_shop_ease/core/app/check_internet.dart';
 import 'package:app_shop_ease/core/app/env_variables.dart';
+import 'package:app_shop_ease/featuers/admin/data/api/category_api.dart';
 import 'package:app_shop_ease/featuers/admin/data/api/dashboard_api.dart';
+import 'package:app_shop_ease/featuers/admin/data/graphql/category_queries.dart';
 import 'package:app_shop_ease/featuers/admin/data/graphql/dashbord_queries.dart';
+import 'package:app_shop_ease/featuers/admin/data/repository/data_source/category_data_source.dart';
 import 'package:app_shop_ease/featuers/admin/data/repository/data_source/dashboard_data_source.dart';
+import 'package:app_shop_ease/featuers/admin/data/repository/repository/category_repository.dart';
 import 'package:app_shop_ease/featuers/admin/data/repository/repository/dashboard_repository.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/categories_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/controller/dashboard/dashboard_cubit.dart';
 import 'package:app_shop_ease/featuers/auth/data/api/api_auth.dart';
 import 'package:app_shop_ease/core/services/api/dio_helper/api_consumer.dart';
@@ -69,6 +74,32 @@ class ServicesLocator {
     sl.registerFactory<DashboardCubit>(
       () => DashboardCubit(
         repository: sl<DashboardRepository>(),
+      ),
+    );
+
+    //? category locator
+    sl.registerLazySingleton<CategoryQueries>(
+      () => CategoryQueries(),
+    );
+    sl.registerLazySingleton<CategoryApi>(
+      () => CategoryApi(
+        dio: sl<DioConsumer>(),
+        queries: sl<CategoryQueries>(),
+      ),
+    );
+    sl.registerLazySingleton<CategoryDataSource>(
+      () => CategoryDataSource(
+        api: sl<CategoryApi>(),
+      ),
+    );
+    sl.registerLazySingleton<CategoryRepository>(
+      () => CategoryRepository(
+        dataSource: sl<CategoryDataSource>(),
+      ),
+    );
+    sl.registerFactory<CategoriesCubit>(
+      () => CategoriesCubit(
+        repository: sl<CategoryRepository>(),
       ),
     );
   }

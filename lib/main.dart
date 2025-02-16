@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:app_shop_ease/app_shop_ease.dart';
 import 'package:app_shop_ease/core/app/bloc_observer.dart';
 import 'package:app_shop_ease/core/app/env_variables.dart';
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
 import 'package:app_shop_ease/core/enums/env_type_enum.dart';
 import 'package:app_shop_ease/core/utils/app_shared_preference.dart';
+import 'package:app_shop_ease/featuers/admin/data/api/category_api.dart';
 import 'package:app_shop_ease/featuers/auth/data/model/response/user_data_response.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -25,8 +28,6 @@ void main() async {
   );
   UserDataResponse? fetchedUser = await SharedPreferencesUtils.getPref();
 
-  // AuthApi apiAuth = sl<AuthApi>();
-
   // apiAuth.login(
   //     request: LoginRequest(
   //   email: "esammww.com@gmail.com",
@@ -34,12 +35,12 @@ void main() async {
   // ));
   // apiAuth.userDataResponse(
   //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYwLCJpYXQiOjE3MzQxMzc0MjUsImV4cCI6MTczNTg2NTQyNX0.P7NaIMR_-1hrmtr6cfpTejC4APMTBSP0v6ofpbnotcI");
-  // DashboardApi api = sl<DashboardApi>();
-  // final response = await api.getAllProducts();
+  // CategoryApi api = sl<CategoryApi>();
+  // final response = await api.getAllCategories();
   // response.fold(
   //   (fail) => log(fail.message),
   //   (response) => log(
-  //     response.data?.products?.length.toString() ?? "no data",
+  //     response.data?.categories?.length.toString() ?? "no data",
   //   ),
   // );
   Bloc.observer = AppBlocObserver();

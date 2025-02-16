@@ -25,7 +25,7 @@ class AdminAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: Colors.transparent,
       title: Text(
         title,
-        style: AppTextStyle.textStyle20CP.copyWith(
+        style: AppTextStyle.textStyle22CP.copyWith(
           color: colorText ?? AppColor.primaryColor,
           fontWeight: FontWeight.bold,
         ),

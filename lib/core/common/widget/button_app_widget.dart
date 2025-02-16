@@ -1,4 +1,3 @@
-import 'package:app_shop_ease/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,15 +9,17 @@ class ButtonAppWidget extends StatelessWidget {
     required this.onPressed,
     required this.title,
     this.isFilled = true,
+    this.minWidth,
   });
   final void Function()? onPressed;
   final String title;
   final bool isFilled;
+  final double? minWidth;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
-      minWidth: double.infinity,
+      minWidth: minWidth ?? double.infinity,
       padding: EdgeInsets.symmetric(vertical: 10.h),
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -33,9 +34,10 @@ class ButtonAppWidget extends StatelessWidget {
       child: Text(
         title,
         style: AppTextStyle.textStyle16CP.copyWith(
-            color: isFilled
-                ? Theme.of(context).cardColor
-                : Theme.of(context).primaryColor),
+          color: isFilled
+              ? Theme.of(context).cardColor
+              : Theme.of(context).primaryColor,
+        ),
       ),
     );
   }
