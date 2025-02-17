@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,7 +16,7 @@ import 'package:permission_handler/permission_handler.dart';
 class AppImagePick {
   static Future<XFile?> pickImage(BuildContext context) async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image != null) {
         return XFile(image.path);
       }
@@ -25,7 +27,7 @@ class AppImagePick {
         // show dialog IOS
         await _showAlertPermissionsDialog(context);
       } else {
-        print(e);
+        log(e.toString());
       }
     }
   }
@@ -54,7 +56,7 @@ class AppImagePick {
   }
 }
 
-Future uploadImageToAPI(XFile image) async {
+Future<MultipartFile> uploadImageToAPI(XFile image) async {
   return MultipartFile.fromFile(image.path,
       filename: image.path.split('/').last);
 }

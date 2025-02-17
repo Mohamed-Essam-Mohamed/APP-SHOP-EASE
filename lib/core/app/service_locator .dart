@@ -1,5 +1,6 @@
 import 'package:app_shop_ease/core/app/check_internet.dart';
 import 'package:app_shop_ease/core/app/env_variables.dart';
+import 'package:app_shop_ease/core/utils/app_upload_file.dart';
 import 'package:app_shop_ease/featuers/admin/data/api/category_api.dart';
 import 'package:app_shop_ease/featuers/admin/data/api/dashboard_api.dart';
 import 'package:app_shop_ease/featuers/admin/data/graphql/category_queries.dart';
@@ -102,5 +103,9 @@ class ServicesLocator {
         repository: sl<CategoryRepository>(),
       ),
     );
+    //? upload file
+    // sl.registerFactory<AppUploadFile>(
+    //   () => AppUploadFile(),
+    // );
   }
 }

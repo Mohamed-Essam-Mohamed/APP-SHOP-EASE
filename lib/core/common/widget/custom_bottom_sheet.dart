@@ -7,7 +7,7 @@ class CustomBottomSheet {
     required BuildContext context,
     required Widget child,
     Color? backgroundColor,
-    VoidCallback? onTap,
+    VoidCallback? whenComplete,
   }) {
     showModalBottomSheet<dynamic>(
       context: context,
@@ -29,6 +29,6 @@ class CustomBottomSheet {
           ),
         );
       },
-    ).whenComplete(onTap ?? () {});
+    ).whenComplete(whenComplete ?? () {});
   }
 }

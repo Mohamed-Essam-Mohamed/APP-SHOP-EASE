@@ -17,7 +17,7 @@ class AllCategoryListSection extends StatelessWidget {
         if (state.isAllCategoryFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              backgroundColor: Colors.red.shade100,
+              backgroundColor: Colors.red,
               duration: const Duration(seconds: 1),
               content: Text(
                 state.errorAllCategory,

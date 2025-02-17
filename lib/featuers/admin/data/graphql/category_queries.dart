@@ -1,3 +1,5 @@
+import 'package:app_shop_ease/featuers/admin/data/model/request/categories/create_category_request.dart';
+
 class CategoryQueries {
   Map<String, dynamic> getAllCategoriesQuery() {
     return {
@@ -12,6 +14,26 @@ class CategoryQueries {
           }
         }
        ''',
+    };
+  }
+
+  Map<String, dynamic> createCategoryQuery(CreateCategoryRequest request) {
+    return {
+      'query': r'''
+       mutation Create($name: String!, $image: String!) {
+          addCategory(
+            data: { name: $name, image: $image }
+          ) {
+            id
+            name
+            image
+          }
+        }
+      ''',
+      'variables': {
+        'name': request.name,
+        'image': request.image,
+      },
     };
   }
 }
