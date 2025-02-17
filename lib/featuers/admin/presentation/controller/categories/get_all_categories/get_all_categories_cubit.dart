@@ -9,10 +9,11 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-part 'categories_state.dart';
+part 'get_all_categories_state.dart';
 
-class CategoriesCubit extends Cubit<CategoriesState> {
-  CategoriesCubit({required this.repository}) : super(CategoriesState());
+class GetAllCategoriesCubit extends Cubit<GetAllCategoriesState> {
+  GetAllCategoriesCubit({required this.repository})
+      : super(GetAllCategoriesState());
   final CategoryRepository repository;
 
   Future<void> getAllCategories() async {

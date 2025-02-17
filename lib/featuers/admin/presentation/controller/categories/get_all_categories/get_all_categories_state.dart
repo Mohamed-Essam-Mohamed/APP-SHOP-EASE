@@ -1,8 +1,8 @@
-part of 'categories_cubit.dart';
+part of 'get_all_categories_cubit.dart';
 
 enum CategoriesStatus { loading, success, failure }
 
-extension CategoriesStatusX on CategoriesState {
+extension GetAllCategoriesStatusX on GetAllCategoriesState {
   bool get isAllCategoryLoading =>
       allCategoryStatus == CategoriesStatus.loading;
   bool get isAllCategorySuccess =>
@@ -18,7 +18,7 @@ extension CategoriesStatusX on CategoriesState {
       createCategoryStatus == CategoriesStatus.failure;
 }
 
-class CategoriesState extends Equatable {
+class GetAllCategoriesState extends Equatable {
   final List<CategoriesData> allCategories;
   final CategoriesStatus allCategoryStatus;
   final String errorAllCategory;
@@ -34,7 +34,7 @@ class CategoriesState extends Equatable {
 
   final TextEditingController controller;
   final GlobalKey<FormState> formKey;
-  CategoriesState({
+  GetAllCategoriesState({
     this.allCategories = const [],
     this.allCategoryStatus = CategoriesStatus.loading,
     this.errorAllCategory = '',
@@ -50,7 +50,7 @@ class CategoriesState extends Equatable {
   })  : controller = controller ?? TextEditingController(),
         formKey = formKey ?? GlobalKey<FormState>();
 
-  CategoriesState copyWith({
+  GetAllCategoriesState copyWith({
     List<CategoriesData>? allCategories,
     CategoriesStatus? allCategoryStatus,
     String? errorAllCategory,
@@ -64,7 +64,7 @@ class CategoriesState extends Equatable {
     String? errorGetUrlImage,
     GlobalKey<FormState>? formKey,
   }) {
-    return CategoriesState(
+    return GetAllCategoriesState(
       allCategories: allCategories ?? this.allCategories,
       allCategoryStatus: allCategoryStatus ?? this.allCategoryStatus,
       errorAllCategory: errorAllCategory ?? this.errorAllCategory,

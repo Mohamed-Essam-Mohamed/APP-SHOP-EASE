@@ -9,7 +9,7 @@ import 'package:app_shop_ease/featuers/admin/data/repository/data_source/categor
 import 'package:app_shop_ease/featuers/admin/data/repository/data_source/dashboard_data_source.dart';
 import 'package:app_shop_ease/featuers/admin/data/repository/repository/category_repository.dart';
 import 'package:app_shop_ease/featuers/admin/data/repository/repository/dashboard_repository.dart';
-import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/categories_cubit.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/get_all_categories/get_all_categories_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/controller/dashboard/dashboard_cubit.dart';
 import 'package:app_shop_ease/featuers/auth/data/api/api_auth.dart';
 import 'package:app_shop_ease/core/services/api/dio_helper/api_consumer.dart';
@@ -98,8 +98,8 @@ class ServicesLocator {
         dataSource: sl<CategoryDataSource>(),
       ),
     );
-    sl.registerFactory<CategoriesCubit>(
-      () => CategoriesCubit(
+    sl.registerFactory<GetAllCategoriesCubit>(
+      () => GetAllCategoriesCubit(
         repository: sl<CategoryRepository>(),
       ),
     );

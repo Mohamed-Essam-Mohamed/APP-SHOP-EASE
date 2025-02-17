@@ -1,7 +1,7 @@
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
 import 'package:app_shop_ease/core/common/widget/admin_app_bar_widget.dart';
 import 'package:app_shop_ease/core/utils/app_color.dart';
-import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/categories_cubit.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/get_all_categories/get_all_categories_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/category_ui/refactor/add_category_section.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/category_ui/refactor/all_category_list_section.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +20,8 @@ class CategoryScreen extends StatelessWidget {
         backgroundColor: AppColor.secondaryColor,
         title: "Category",
       ),
-      body: BlocProvider<CategoriesCubit>(
-        create: (context) => sl<CategoriesCubit>()..getAllCategories(),
+      body: BlocProvider<GetAllCategoriesCubit>(
+        create: (context) => sl<GetAllCategoriesCubit>()..getAllCategories(),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
           child: Column(

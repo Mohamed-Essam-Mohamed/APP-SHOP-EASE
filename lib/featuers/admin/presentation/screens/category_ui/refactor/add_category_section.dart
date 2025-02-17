@@ -9,7 +9,7 @@ import 'package:app_shop_ease/core/utils/app_color.dart';
 import 'package:app_shop_ease/core/utils/app_image_pick.dart';
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/core/utils/app_toast.dart';
-import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/categories_cubit.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/get_all_categories/get_all_categories_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +24,7 @@ class AddCategorySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CategoriesCubit, CategoriesState>(
+    return BlocListener<GetAllCategoriesCubit, GetAllCategoriesState>(
       listener: (context, state) {},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,13 +36,13 @@ class AddCategorySection extends StatelessWidget {
               CustomBottomSheet.showCustomBottomSheet(
                 backgroundColor: AppColor.secondaryColor,
                 context: context,
-                child: BlocProvider<CategoriesCubit>(
-                  create: (context) => sl<CategoriesCubit>(),
+                child: BlocProvider<GetAllCategoriesCubit>(
+                  create: (context) => sl<GetAllCategoriesCubit>(),
                   child: BottomSheetCategory(),
                 ),
                 whenComplete: () {
                   log("whenComplete");
-                  context.read<CategoriesCubit>().getAllCategories();
+                  context.read<GetAllCategoriesCubit>().getAllCategories();
                 },
               );
             },
@@ -60,7 +60,7 @@ class BottomSheetCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CategoriesCubit, CategoriesState>(
+    return BlocConsumer<GetAllCategoriesCubit, GetAllCategoriesState>(
       listener: (context, state) {
         if (state.isCreateCategoryFailure) {
           AppToast.showToast(
@@ -101,7 +101,9 @@ class BottomSheetCategory extends StatelessWidget {
                 onTap: () async {
                   XFile? image = await AppImagePick.pickImage(context);
                   if (image == null) return;
-                  context.read<CategoriesCubit>().updateCategoryImage(image);
+                  context
+                      .read<GetAllCategoriesCubit>()
+                      .updateCategoryImage(image);
                 },
                 child: Container(
                   height: 150.h,
@@ -146,7 +148,7 @@ class BottomSheetCategory extends StatelessWidget {
                 minWidth: double.infinity,
                 onPressed: () {
                   log(state.image!.path);
-                  context.read<CategoriesCubit>().createCategory();
+                  context.read<GetAllCategoriesCubit>().createCategory();
                 },
               ),
               Gap(20.h),
