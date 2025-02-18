@@ -40,6 +40,9 @@ class CategoryItem extends StatelessWidget {
                     color: AppColor.secondaryColor,
                     fontWeight: FontWeight.bold,
                   ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textAlign: TextAlign.start,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -64,17 +67,22 @@ class CategoryItem extends StatelessWidget {
                 ),
               ],
             ),
-            // Image.asset(AppImagesPng.categories, height: 100.h),
-            Gap(16.w),
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.r),
-                child: CachedNetworkImage(
-                  imageUrl: imagePath,
-                  placeholder: (context, url) =>
-                      LoadingShimmer(borderRadius: 8.r),
-                  errorWidget: (context, url, error) =>
-                      LoadingShimmer(borderRadius: 8.r),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: CachedNetworkImage(
+                imageUrl: imagePath,
+                fit: BoxFit.cover,
+                width: 150.w,
+                height: double.infinity,
+                placeholder: (context, url) => LoadingShimmer(
+                  borderRadius: 8.r,
+                  width: 150.w,
+                  height: double.infinity,
+                ),
+                errorWidget: (context, url, error) => LoadingShimmer(
+                  borderRadius: 8.r,
+                  width: 150.w,
+                  height: double.infinity,
                 ),
               ),
             ),

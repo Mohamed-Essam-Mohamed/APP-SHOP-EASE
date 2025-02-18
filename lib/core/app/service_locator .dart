@@ -9,6 +9,7 @@ import 'package:app_shop_ease/featuers/admin/data/repository/data_source/categor
 import 'package:app_shop_ease/featuers/admin/data/repository/data_source/dashboard_data_source.dart';
 import 'package:app_shop_ease/featuers/admin/data/repository/repository/category_repository.dart';
 import 'package:app_shop_ease/featuers/admin/data/repository/repository/dashboard_repository.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/add_category/add_category_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/get_all_categories/get_all_categories_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/controller/dashboard/dashboard_cubit.dart';
 import 'package:app_shop_ease/featuers/auth/data/api/api_auth.dart';
@@ -103,9 +104,14 @@ class ServicesLocator {
         repository: sl<CategoryRepository>(),
       ),
     );
+    sl.registerFactory<AddCategoryCubit>(
+      () => AddCategoryCubit(
+        repository: sl<CategoryRepository>(),
+      ),
+    );
     //? upload file
-    // sl.registerFactory<AppUploadFile>(
-    //   () => AppUploadFile(),
-    // );
+    sl.registerFactory<AppUploadFile>(
+      () => AppUploadFile(dio: sl<DioConsumer>()),
+    );
   }
 }

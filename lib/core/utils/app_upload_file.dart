@@ -1,9 +1,10 @@
 //? model upload
+import 'dart:developer';
 import 'dart:io';
 
-import 'package:app_shop_ease/core/app/service_locator%20.dart';
 import 'package:app_shop_ease/core/errors/failure.dart';
 import 'package:app_shop_ease/core/services/api/dio_helper/api_consumer.dart';
+import 'package:app_shop_ease/core/utils/app_image_pick.dart';
 import 'package:dartz/dartz.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -21,27 +22,22 @@ class UploadFileResponse {
   }
 }
 
-// class UploadFileRequest {
-//   UploadFileRequest({required this.file});
-//   final XFile file;
-// }
-
 class AppUploadFile {
-  static late ApiConsumer dio;
-  AppUploadFile() {
-    dio = sl<DioConsumer>();
-  }
+  ApiConsumer dio;
+  AppUploadFile({required this.dio});
 
-  static Future<Either<Failure, String?>> uploadImage(XFile image) async {
+  Future<Either<Failure, String?>> uploadImage(XFile image) async {
+    log("uploadImage");
     try {
       var response = await dio.post(
         "/api/v1/files/upload",
         data: {
-          "file": await uploadImage(image),
+          "file": await uploadImageToAPI(image),
         },
         isFormData: true,
       );
-      var data = UploadFileResponse.fromJson(response.data);
+      var data = UploadFileResponse.fromJson(response);
+      log("${data.location}");
       return Right(data.location);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.toString()));

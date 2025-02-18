@@ -9,6 +9,7 @@ import 'package:app_shop_ease/core/utils/app_color.dart';
 import 'package:app_shop_ease/core/utils/app_image_pick.dart';
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/core/utils/app_toast.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/add_category/add_category_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/get_all_categories/get_all_categories_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,9 +37,9 @@ class AddCategorySection extends StatelessWidget {
               CustomBottomSheet.showCustomBottomSheet(
                 backgroundColor: AppColor.secondaryColor,
                 context: context,
-                child: BlocProvider<GetAllCategoriesCubit>(
-                  create: (context) => sl<GetAllCategoriesCubit>(),
-                  child: BottomSheetCategory(),
+                child: BlocProvider<AddCategoryCubit>(
+                  create: (context) => sl<AddCategoryCubit>(),
+                  child: const BottomSheetCategory(),
                 ),
                 whenComplete: () {
                   log("whenComplete");
@@ -60,18 +61,21 @@ class BottomSheetCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<GetAllCategoriesCubit, GetAllCategoriesState>(
+    return BlocConsumer<AddCategoryCubit, AddCategoryState>(
       listener: (context, state) {
-        if (state.isCreateCategoryFailure) {
+        if (state.isAddCategoryFailure ||
+            state.isUploadImageFailure ||
+            state.isSelectedImageFailure) {
           AppToast.showToast(
             context: context,
-            title: "Error",
-            description: state.errorCreateCategory,
+            title: "Warning",
+            description: (state.errorSelectedImage ?? '') +
+                (state.errorUploadImage ?? '') +
+                (state.errorAddCategory ?? ''),
             type: ToastificationType.warning,
           );
-          log(state.errorCreateCategory);
         }
-        if (state.isCreateCategorySuccess) {
+        if (state.isAddCategorySuccess) {
           AppToast.showToast(
             context: context,
             title: "Success",
@@ -101,9 +105,7 @@ class BottomSheetCategory extends StatelessWidget {
                 onTap: () async {
                   XFile? image = await AppImagePick.pickImage(context);
                   if (image == null) return;
-                  context
-                      .read<GetAllCategoriesCubit>()
-                      .updateCategoryImage(image);
+                  context.read<AddCategoryCubit>().updateCategoryImage(image);
                 },
                 child: Container(
                   height: 150.h,
@@ -114,7 +116,7 @@ class BottomSheetCategory extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.r),
                     color: AppColor.grayColor,
                   ),
-                  child: state.image == null
+                  child: state.fileImage == null
                       ? Icon(
                           Icons.add_a_photo_outlined,
                           size: 80.sp,
@@ -123,7 +125,7 @@ class BottomSheetCategory extends StatelessWidget {
                       : ClipRRect(
                           borderRadius: BorderRadius.circular(10.r),
                           child: Image.file(
-                            File(state.image!.path),
+                            File(state.fileImage!.path),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -147,8 +149,8 @@ class BottomSheetCategory extends StatelessWidget {
                 title: "Create a new category",
                 minWidth: double.infinity,
                 onPressed: () {
-                  log(state.image!.path);
-                  context.read<GetAllCategoriesCubit>().createCategory();
+                  // log(state.fileImage!.path);
+                  context.read<AddCategoryCubit>().createCategory();
                 },
               ),
               Gap(20.h),
