@@ -3,7 +3,7 @@
 import 'package:app_shop_ease/core/constant/app_assets.dart';
 import 'package:app_shop_ease/core/utils/app_color.dart';
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
-import 'package:app_shop_ease/featuers/admin/presentation/screens/add_category_screen.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/screens/category_ui/category_screen.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/add_notification_screen.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/add_products_screen.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/screens/dashboard_ui/dashboard_screen.dart';
@@ -54,7 +54,7 @@ List<DrawerItemModel> adminDrawerListWidget(BuildContext context) =>
           style: AppTextStyle.textStyle18CP
               .copyWith(color: AppColor.secondaryColor),
         ),
-        page: const AddCategoryScreen(),
+        page: const CategoryScreen(),
       ),
       //? Products
       DrawerItemModel(

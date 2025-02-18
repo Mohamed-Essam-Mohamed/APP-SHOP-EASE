@@ -25,23 +25,6 @@ void main() async {
   );
   UserDataResponse? fetchedUser = await SharedPreferencesUtils.getPref();
 
-  // AuthApi apiAuth = sl<AuthApi>();
-
-  // apiAuth.login(
-  //     request: LoginRequest(
-  //   email: "esammww.com@gmail.com",
-  //   password: "123456789",
-  // ));
-  // apiAuth.userDataResponse(
-  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYwLCJpYXQiOjE3MzQxMzc0MjUsImV4cCI6MTczNTg2NTQyNX0.P7NaIMR_-1hrmtr6cfpTejC4APMTBSP0v6ofpbnotcI");
-  // DashboardApi api = sl<DashboardApi>();
-  // final response = await api.getAllProducts();
-  // response.fold(
-  //   (fail) => log(fail.message),
-  //   (response) => log(
-  //     response.data?.products?.length.toString() ?? "no data",
-  //   ),
-  // );
   Bloc.observer = AppBlocObserver();
   await SystemChrome.setPreferredOrientations(
           [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])

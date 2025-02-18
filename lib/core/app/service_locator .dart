@@ -1,9 +1,16 @@
 import 'package:app_shop_ease/core/app/check_internet.dart';
 import 'package:app_shop_ease/core/app/env_variables.dart';
+import 'package:app_shop_ease/core/utils/app_upload_file.dart';
+import 'package:app_shop_ease/featuers/admin/data/api/category_api.dart';
 import 'package:app_shop_ease/featuers/admin/data/api/dashboard_api.dart';
+import 'package:app_shop_ease/featuers/admin/data/graphql/category_queries.dart';
 import 'package:app_shop_ease/featuers/admin/data/graphql/dashbord_queries.dart';
+import 'package:app_shop_ease/featuers/admin/data/repository/data_source/category_data_source.dart';
 import 'package:app_shop_ease/featuers/admin/data/repository/data_source/dashboard_data_source.dart';
+import 'package:app_shop_ease/featuers/admin/data/repository/repository/category_repository.dart';
 import 'package:app_shop_ease/featuers/admin/data/repository/repository/dashboard_repository.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/add_category/add_category_cubit.dart';
+import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/get_all_categories/get_all_categories_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/controller/dashboard/dashboard_cubit.dart';
 import 'package:app_shop_ease/featuers/auth/data/api/api_auth.dart';
 import 'package:app_shop_ease/core/services/api/dio_helper/api_consumer.dart';
@@ -70,6 +77,41 @@ class ServicesLocator {
       () => DashboardCubit(
         repository: sl<DashboardRepository>(),
       ),
+    );
+
+    //? category locator
+    sl.registerLazySingleton<CategoryQueries>(
+      () => CategoryQueries(),
+    );
+    sl.registerLazySingleton<CategoryApi>(
+      () => CategoryApi(
+        dio: sl<DioConsumer>(),
+        queries: sl<CategoryQueries>(),
+      ),
+    );
+    sl.registerLazySingleton<CategoryDataSource>(
+      () => CategoryDataSource(
+        api: sl<CategoryApi>(),
+      ),
+    );
+    sl.registerLazySingleton<CategoryRepository>(
+      () => CategoryRepository(
+        dataSource: sl<CategoryDataSource>(),
+      ),
+    );
+    sl.registerFactory<GetAllCategoriesCubit>(
+      () => GetAllCategoriesCubit(
+        repository: sl<CategoryRepository>(),
+      ),
+    );
+    sl.registerFactory<AddCategoryCubit>(
+      () => AddCategoryCubit(
+        repository: sl<CategoryRepository>(),
+      ),
+    );
+    //? upload file
+    sl.registerFactory<AppUploadFile>(
+      () => AppUploadFile(dio: sl<DioConsumer>()),
     );
   }
 }

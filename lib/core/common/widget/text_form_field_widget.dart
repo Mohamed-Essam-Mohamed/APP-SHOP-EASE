@@ -13,11 +13,13 @@ class TextFormFieldWidget extends StatefulWidget {
     required this.validator,
     required this.controller,
     this.isSecureText,
+    this.fontSize,
   });
   final String title;
   final String hintText;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final double? fontSize;
   bool? isSecureText;
 
   @override
@@ -33,9 +35,11 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       children: [
         Text(
           widget.title,
-          style: AppTextStyle.textStyle22CP,
+          style: AppTextStyle.textStyle22CP.copyWith(
+            fontSize: widget.fontSize,
+          ),
         ),
-        Gap(10.h),
+        Gap(6.h),
         TextFormField(
           textDirection: TextDirection.ltr,
           controller: widget.controller,
