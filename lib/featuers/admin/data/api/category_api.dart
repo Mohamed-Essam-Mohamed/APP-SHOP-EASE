@@ -8,6 +8,7 @@ import 'package:app_shop_ease/featuers/admin/data/graphql/category_queries.dart'
 import 'package:app_shop_ease/featuers/admin/data/model/request/categories/create_category_request.dart';
 import 'package:app_shop_ease/featuers/admin/data/model/response/categories/all_category_response.dart';
 import 'package:app_shop_ease/featuers/admin/data/model/response/categories/create_category_response.dart';
+import 'package:app_shop_ease/featuers/admin/data/model/response/categories/delete_category_response.dart';
 import 'package:dartz/dartz.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -43,6 +44,23 @@ class CategoryApi {
         )),
       );
       return Right(CreateCategoryResponse.fromJson(response));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.toString()));
+    } on SocketException catch (e) {
+      return Left(ServerFailure(e.toString()));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  Future<Either<Failure, DeleteCategoryResponse>> deleteCategory(
+      String id) async {
+    try {
+      var response = await dio.post(
+        ConstantApi.graphql,
+        data: queries.deleteCategoryQuery(id: id),
+      );
+      return Right(DeleteCategoryResponse.fromJson(response));
     } on ServerException catch (e) {
       return Left(ServerFailure(e.toString()));
     } on SocketException catch (e) {

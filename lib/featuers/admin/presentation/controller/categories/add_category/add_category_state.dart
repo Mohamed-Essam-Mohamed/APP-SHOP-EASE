@@ -1,20 +1,21 @@
 part of 'add_category_cubit.dart';
 
 extension AddCategoryStatusX on AddCategoryState {
+  //? add category
   bool get isAddCategoryLoading =>
       addCategoryStatus == CategoriesStatus.loading;
   bool get isAddCategorySuccess =>
       addCategoryStatus == CategoriesStatus.success;
   bool get isAddCategoryFailure =>
       addCategoryStatus == CategoriesStatus.failure;
-
+  //? selected image
   bool get isSelectedImageLoading =>
       selectedImageStatus == CategoriesStatus.loading;
   bool get isSelectedImageSuccess =>
       selectedImageStatus == CategoriesStatus.success;
   bool get isSelectedImageFailure =>
       selectedImageStatus == CategoriesStatus.failure;
-
+  //? upload image
   bool get isUploadImageLoading =>
       uploadImageStatus == CategoriesStatus.loading;
   bool get isUploadImageSuccess =>
@@ -33,20 +34,20 @@ class AddCategoryState extends Equatable {
   final String errorUploadImage;
   //? Fields of add category
   final CategoriesStatus addCategoryStatus;
-  final String? errorAddCategory;
+  final String errorAddCategory;
   final String? urlImage;
   final TextEditingController controller;
   final GlobalKey<FormState> formKey;
 
   AddCategoryState({
-    this.selectedImageStatus = CategoriesStatus.loading,
+    this.selectedImageStatus = CategoriesStatus.initial,
     this.errorSelectedImage = '',
     this.fileImage,
-    this.addCategoryStatus = CategoriesStatus.loading,
-    this.errorAddCategory,
+    this.addCategoryStatus = CategoriesStatus.initial,
+    this.errorAddCategory = '',
     this.urlImage,
     this.errorUploadImage = '',
-    this.uploadImageStatus = CategoriesStatus.loading,
+    this.uploadImageStatus = CategoriesStatus.initial,
     TextEditingController? controller,
     GlobalKey<FormState>? formKey,
   })  : controller = controller ?? TextEditingController(),

@@ -15,24 +15,29 @@ class AddCategoryCubit extends Cubit<AddCategoryState> {
   final CategoryRepository repository;
 
   void updateCategoryImage(XFile image) {
-    emit(state.copyWith(selectedImageStatus: CategoriesStatus.loading));
     emit(state.copyWith(
-        selectedImageStatus: CategoriesStatus.success, fileImage: image));
+      selectedImageStatus: CategoriesStatus.loading,
+      // addCategoryStatus: CategoriesStatus.initial,
+    ));
+    emit(state.copyWith(
+      selectedImageStatus: CategoriesStatus.success,
+      fileImage: image,
+    ));
   }
 
   Future<void> createCategory() async {
-    emit(state.copyWith(addCategoryStatus: CategoriesStatus.loading));
-
     if (state.formKey.currentState!.validate()) {
       if (state.fileImage == null) {
-        emit(state.copyWith(selectedImageStatus: CategoriesStatus.loading));
+        emit(state.copyWith(selectedImageStatus: CategoriesStatus.initial));
         emit(state.copyWith(
-            selectedImageStatus: CategoriesStatus.failure,
-            errorSelectedImage: "Please select image"));
+          selectedImageStatus: CategoriesStatus.failure,
+          errorSelectedImage: "Please select image...",
+        ));
         return;
       }
 
-      emit(state.copyWith(uploadImageStatus: CategoriesStatus.loading));
+      // emit(state.copyWith(uploadImageStatus: CategoriesStatus.loading));
+      emit(state.copyWith(addCategoryStatus: CategoriesStatus.loading));
       AppUploadFile appUploadFile = sl<AppUploadFile>();
       final result = await appUploadFile.uploadImage(state.fileImage!);
       result.fold(
@@ -40,7 +45,8 @@ class AddCategoryCubit extends Cubit<AddCategoryState> {
           emit(
             state.copyWith(
               uploadImageStatus: CategoriesStatus.failure,
-              errorUploadImage: failure.message,
+              addCategoryStatus: CategoriesStatus.initial,
+              errorUploadImage: "Wrong upload image Please try again...",
             ),
           );
           return;
@@ -60,7 +66,7 @@ class AddCategoryCubit extends Cubit<AddCategoryState> {
             (failure) {
               emit(state.copyWith(
                 addCategoryStatus: CategoriesStatus.failure,
-                errorAddCategory: failure.message,
+                errorAddCategory: "Error add category Please try again...",
               ));
             },
             (data) {

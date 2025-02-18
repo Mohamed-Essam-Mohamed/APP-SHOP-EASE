@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:app_shop_ease/core/extensions/context_extention.dart';
+import 'package:app_shop_ease/core/utils/app_dailog.dart';
 import 'package:app_shop_ease/core/utils/app_toast.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/get_all_categories/get_all_categories_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/widget/category_item.dart';
@@ -14,6 +18,7 @@ class AllCategoryListSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GetAllCategoriesCubit, GetAllCategoriesState>(
+      //   buildWhen: (previous, current) => previous != current,
       listener: (context, state) {
         if (state.isAllCategoryFailure) {
           AppToast.showToast(
@@ -22,6 +27,28 @@ class AllCategoryListSection extends StatelessWidget {
             description: "Wrong to get categories Please try again...",
             type: ToastificationType.error,
           );
+        }
+        if (state.isDeleteCategoryFailure) {
+          log("failure");
+          AppToast.showToast(
+            context: context,
+            title: "warning",
+            description: "Wrong to delete categories Please try again...",
+            type: ToastificationType.warning,
+          );
+        }
+        if (state.isDeleteCategorySuccess) {
+          log("success");
+          AppToast.showToast(
+            context: context,
+            title: "Success",
+            description: "Category Deleted Successfully...",
+            type: ToastificationType.success,
+          );
+        }
+        if (state.isDeleteCategoryLoading) {
+          log("loading");
+          //   AppDialog.showLoading(context: context, message: "Loading...");
         }
       },
       builder: (context, state) {
@@ -57,7 +84,11 @@ class AllCategoryListSection extends StatelessWidget {
                   imagePath: state.allCategories[index].image ?? '',
                   nameCategory:
                       state.allCategories[index].name ?? "Category Name",
-                  onPressedDelete: () {},
+                  onPressedDelete: () {
+                    context.read<GetAllCategoriesCubit>()
+                      ..deleteCategory(state.allCategories[index].id ?? '0')
+                      ..getAllCategories();
+                  },
                   onPressedEdit: () {},
                 );
               },
