@@ -1,4 +1,3 @@
-import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/core/utils/app_toast.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/controller/categories/get_all_categories/get_all_categories_cubit.dart';
 import 'package:app_shop_ease/featuers/admin/presentation/widget/category_item.dart';
@@ -20,7 +19,7 @@ class AllCategoryListSection extends StatelessWidget {
           AppToast.showToast(
             context: context,
             title: "Error",
-            description: state.errorAllCategory,
+            description: "Wrong to get categories Please try again...",
             type: ToastificationType.error,
           );
         }

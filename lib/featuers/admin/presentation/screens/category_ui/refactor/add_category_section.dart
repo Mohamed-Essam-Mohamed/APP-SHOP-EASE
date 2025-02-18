@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:app_shop_ease/core/app/service_locator%20.dart';
@@ -26,7 +25,16 @@ class AddCategorySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<GetAllCategoriesCubit, GetAllCategoriesState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.isAllCategoryFailure) {
+          AppToast.showToast(
+            context: context,
+            title: "Error",
+            description: "Wrong to get categories Please try again...",
+            type: ToastificationType.error,
+          );
+        }
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -42,7 +50,6 @@ class AddCategorySection extends StatelessWidget {
                   child: const BottomSheetCategory(),
                 ),
                 whenComplete: () {
-                  log("whenComplete");
                   context.read<GetAllCategoriesCubit>().getAllCategories();
                 },
               );
