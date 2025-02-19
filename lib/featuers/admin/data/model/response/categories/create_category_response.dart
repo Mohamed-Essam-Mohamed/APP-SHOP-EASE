@@ -1,19 +1,20 @@
 class CreateCategoryResponse {
-  Data? data;
+  CreateCategoryData? data;
 
   CreateCategoryResponse({this.data});
 
   CreateCategoryResponse.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    data =
+        json['data'] != null ? CreateCategoryData.fromJson(json['data']) : null;
   }
 }
 
-class Data {
+class CreateCategoryData {
   AddCategory? addCategory;
 
-  Data({this.addCategory});
+  CreateCategoryData({this.addCategory});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  CreateCategoryData.fromJson(Map<String, dynamic> json) {
     addCategory = json['addCategory'] != null
         ? AddCategory.fromJson(json['addCategory'])
         : null;

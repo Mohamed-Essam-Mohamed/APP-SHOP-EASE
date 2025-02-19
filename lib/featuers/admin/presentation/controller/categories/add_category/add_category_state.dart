@@ -1,26 +1,34 @@
 part of 'add_category_cubit.dart';
 
 extension AddCategoryStatusX on AddCategoryState {
+  //? add category
   bool get isAddCategoryLoading =>
       addCategoryStatus == CategoriesStatus.loading;
   bool get isAddCategorySuccess =>
       addCategoryStatus == CategoriesStatus.success;
   bool get isAddCategoryFailure =>
       addCategoryStatus == CategoriesStatus.failure;
-
+  //? selected image
   bool get isSelectedImageLoading =>
       selectedImageStatus == CategoriesStatus.loading;
   bool get isSelectedImageSuccess =>
       selectedImageStatus == CategoriesStatus.success;
   bool get isSelectedImageFailure =>
       selectedImageStatus == CategoriesStatus.failure;
-
+  //? upload image
   bool get isUploadImageLoading =>
       uploadImageStatus == CategoriesStatus.loading;
   bool get isUploadImageSuccess =>
       uploadImageStatus == CategoriesStatus.success;
   bool get isUploadImageFailure =>
       uploadImageStatus == CategoriesStatus.failure;
+  //? update category
+  bool get isUpdateCategoryLoading =>
+      updateCategoryStatus == CategoriesStatus.loading;
+  bool get isUpdateCategorySuccess =>
+      updateCategoryStatus == CategoriesStatus.success;
+  bool get isUpdateCategoryFailure =>
+      updateCategoryStatus == CategoriesStatus.failure;
 }
 
 class AddCategoryState extends Equatable {
@@ -33,20 +41,28 @@ class AddCategoryState extends Equatable {
   final String errorUploadImage;
   //? Fields of add category
   final CategoriesStatus addCategoryStatus;
-  final String? errorAddCategory;
+  final String errorAddCategory;
   final String? urlImage;
   final TextEditingController controller;
   final GlobalKey<FormState> formKey;
+  //? fields of Update category
+  final CategoriesStatus updateCategoryStatus;
+  final String errorUpdateCategory;
+  String updateCategoryName;
 
   AddCategoryState({
-    this.selectedImageStatus = CategoriesStatus.loading,
+    this.selectedImageStatus = CategoriesStatus.initial,
     this.errorSelectedImage = '',
     this.fileImage,
-    this.addCategoryStatus = CategoriesStatus.loading,
-    this.errorAddCategory,
+    this.addCategoryStatus = CategoriesStatus.initial,
+    this.errorAddCategory = '',
     this.urlImage,
     this.errorUploadImage = '',
-    this.uploadImageStatus = CategoriesStatus.loading,
+    this.uploadImageStatus = CategoriesStatus.initial,
+    //? update category
+    this.updateCategoryStatus = CategoriesStatus.initial,
+    this.errorUpdateCategory = '',
+    this.updateCategoryName = '',
     TextEditingController? controller,
     GlobalKey<FormState>? formKey,
   })  : controller = controller ?? TextEditingController(),
@@ -61,6 +77,9 @@ class AddCategoryState extends Equatable {
     CategoriesStatus? addCategoryStatus,
     String? errorAddCategory,
     String? urlImage,
+    CategoriesStatus? updateCategoryStatus,
+    String? errorUpdateCategory,
+    String? updateCategoryName,
     GlobalKey<FormState>? formKey,
     TextEditingController? controller,
   }) {
@@ -75,6 +94,9 @@ class AddCategoryState extends Equatable {
       errorUploadImage: errorUploadImage ?? this.errorUploadImage,
       formKey: formKey ?? this.formKey,
       controller: controller ?? this.controller,
+      updateCategoryStatus: updateCategoryStatus ?? this.updateCategoryStatus,
+      errorUpdateCategory: errorUpdateCategory ?? this.errorUpdateCategory,
+      updateCategoryName: updateCategoryName ?? this.updateCategoryName,
     );
   }
 
@@ -90,5 +112,8 @@ class AddCategoryState extends Equatable {
         controller,
         errorAddCategory,
         urlImage,
+        updateCategoryStatus,
+        errorUpdateCategory,
+        updateCategoryName,
       ];
 }

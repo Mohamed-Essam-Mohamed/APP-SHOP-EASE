@@ -1,19 +1,19 @@
 class AllCategoryResponse {
-  Data? data;
+  AllCategoryData? data;
 
   AllCategoryResponse({this.data});
 
   AllCategoryResponse.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? AllCategoryData.fromJson(json['data']) : null;
   }
 }
 
-class Data {
+class AllCategoryData {
   List<CategoriesData>? categories;
 
-  Data({this.categories});
+  AllCategoryData({this.categories});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  AllCategoryData.fromJson(Map<String, dynamic> json) {
     if (json['categories'] != null) {
       categories = <CategoriesData>[];
       json['categories'].forEach((v) {

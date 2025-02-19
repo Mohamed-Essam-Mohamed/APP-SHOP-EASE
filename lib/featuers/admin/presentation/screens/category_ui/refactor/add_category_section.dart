@@ -5,6 +5,7 @@ import 'package:app_shop_ease/core/common/widget/custom_bottom_sheet.dart';
 import 'package:app_shop_ease/core/common/widget/text_form_field_widget.dart';
 import 'package:app_shop_ease/core/extensions/context_extention.dart';
 import 'package:app_shop_ease/core/utils/app_color.dart';
+import 'package:app_shop_ease/core/utils/app_dailog.dart';
 import 'package:app_shop_ease/core/utils/app_image_pick.dart';
 import 'package:app_shop_ease/core/utils/app_text_style.dart';
 import 'package:app_shop_ease/core/utils/app_toast.dart';
@@ -47,7 +48,7 @@ class AddCategorySection extends StatelessWidget {
                 context: context,
                 child: BlocProvider<AddCategoryCubit>(
                   create: (context) => sl<AddCategoryCubit>(),
-                  child: const BottomSheetCategory(),
+                  child: const BottomSheetAddCategory(),
                 ),
                 whenComplete: () {
                   context.read<GetAllCategoriesCubit>().getAllCategories();
@@ -63,35 +64,13 @@ class AddCategorySection extends StatelessWidget {
   }
 }
 
-class BottomSheetCategory extends StatelessWidget {
-  const BottomSheetCategory({super.key});
+class BottomSheetAddCategory extends StatelessWidget {
+  const BottomSheetAddCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddCategoryCubit, AddCategoryState>(
-      listener: (context, state) {
-        if (state.isAddCategoryFailure ||
-            state.isUploadImageFailure ||
-            state.isSelectedImageFailure) {
-          AppToast.showToast(
-            context: context,
-            title: "Warning",
-            description: (state.errorSelectedImage ?? '') +
-                (state.errorUploadImage ?? '') +
-                (state.errorAddCategory ?? ''),
-            type: ToastificationType.warning,
-          );
-        }
-        if (state.isAddCategorySuccess) {
-          AppToast.showToast(
-            context: context,
-            title: "Success",
-            description: "Category Added Successfully...",
-            type: ToastificationType.success,
-          );
-          context.pop();
-        }
-      },
+      listener: _listenerStates,
       builder: (context, state) {
         return Form(
           key: state.formKey,
@@ -112,7 +91,7 @@ class BottomSheetCategory extends StatelessWidget {
                 onTap: () async {
                   XFile? image = await AppImagePick.pickImage(context);
                   if (image == null) return;
-                  context.read<AddCategoryCubit>().updateCategoryImage(image);
+                  context.read<AddCategoryCubit>().selectCategoryImage(image);
                 },
                 child: Container(
                   height: 150.h,
@@ -166,5 +145,54 @@ class BottomSheetCategory extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _listenerStates(BuildContext context, AddCategoryState state) {
+    //? listener for selected image
+    if (state.isSelectedImageFailure) {
+      AppToast.showToast(
+        context: context,
+        title: "Warning",
+        description: state.errorSelectedImage,
+        type: ToastificationType.warning,
+      );
+    }
+
+    //? listener for upload image to server
+    if (state.isUploadImageFailure) {
+      context.pop();
+      AppToast.showToast(
+        context: context,
+        title: "Error",
+        description: state.errorSelectedImage,
+        type: ToastificationType.error,
+      );
+    }
+
+    //? listener for add category
+    if (state.isAddCategoryFailure) {
+      context.pop();
+      AppToast.showToast(
+        context: context,
+        title: "Error",
+        description: state.errorAddCategory,
+        type: ToastificationType.error,
+      );
+    }
+
+    if (state.isAddCategorySuccess) {
+      context.pop();
+      context.pop();
+      context.pop();
+      AppToast.showToast(
+        context: context,
+        title: "Success",
+        description: "Category Added Successfully...",
+        type: ToastificationType.success,
+      );
+    }
+    if (state.isAddCategoryLoading) {
+      AppDialog.showLoading(context: context, message: "Loading...");
+    }
   }
 }
