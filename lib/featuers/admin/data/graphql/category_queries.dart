@@ -1,4 +1,5 @@
 import 'package:app_shop_ease/featuers/admin/data/model/request/categories/create_category_request.dart';
+import 'package:app_shop_ease/featuers/admin/data/model/request/categories/update_category_request.dart';
 
 class CategoryQueries {
   Map<String, dynamic> getAllCategoriesQuery() {
@@ -46,6 +47,26 @@ class CategoryQueries {
       ''',
       'variables': {
         'id': id,
+      },
+    };
+  }
+
+  Map<String, dynamic> updateCategoryQuery({
+    required UpdateCategoryRequest request,
+  }) {
+    return {
+      'query': r'''
+        mutation Update($id: ID!, $name: String!, $image: String!) {
+          updateCategory(id: $id, changes: { name: $name , image : $image  })
+          {
+            id 
+          }
+        }
+      ''',
+      'variables': {
+        'id': request.id,
+        'name': request.name,
+        'image': request.image,
       },
     };
   }

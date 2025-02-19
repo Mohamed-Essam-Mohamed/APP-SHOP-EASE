@@ -14,6 +14,7 @@ class TextFormFieldWidget extends StatefulWidget {
     required this.controller,
     this.isSecureText,
     this.fontSize,
+    this.onChanged,
   });
   final String title;
   final String hintText;
@@ -21,7 +22,7 @@ class TextFormFieldWidget extends StatefulWidget {
   final TextEditingController? controller;
   final double? fontSize;
   bool? isSecureText;
-
+  void Function(String)? onChanged;
   @override
   State<TextFormFieldWidget> createState() => _TextFormFieldWidgetState();
 }
@@ -45,6 +46,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
           controller: widget.controller,
           validator: widget.validator,
           obscureText: widget.isSecureText ?? false,
+          onChanged: widget.onChanged,
           decoration: InputDecoration(
             suffixIcon: _secureIcon(),
             hintText: widget.hintText,

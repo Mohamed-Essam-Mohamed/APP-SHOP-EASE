@@ -22,6 +22,13 @@ extension AddCategoryStatusX on AddCategoryState {
       uploadImageStatus == CategoriesStatus.success;
   bool get isUploadImageFailure =>
       uploadImageStatus == CategoriesStatus.failure;
+  //? update category
+  bool get isUpdateCategoryLoading =>
+      updateCategoryStatus == CategoriesStatus.loading;
+  bool get isUpdateCategorySuccess =>
+      updateCategoryStatus == CategoriesStatus.success;
+  bool get isUpdateCategoryFailure =>
+      updateCategoryStatus == CategoriesStatus.failure;
 }
 
 class AddCategoryState extends Equatable {
@@ -38,6 +45,10 @@ class AddCategoryState extends Equatable {
   final String? urlImage;
   final TextEditingController controller;
   final GlobalKey<FormState> formKey;
+  //? fields of Update category
+  final CategoriesStatus updateCategoryStatus;
+  final String errorUpdateCategory;
+  String updateCategoryName;
 
   AddCategoryState({
     this.selectedImageStatus = CategoriesStatus.initial,
@@ -48,6 +59,10 @@ class AddCategoryState extends Equatable {
     this.urlImage,
     this.errorUploadImage = '',
     this.uploadImageStatus = CategoriesStatus.initial,
+    //? update category
+    this.updateCategoryStatus = CategoriesStatus.initial,
+    this.errorUpdateCategory = '',
+    this.updateCategoryName = '',
     TextEditingController? controller,
     GlobalKey<FormState>? formKey,
   })  : controller = controller ?? TextEditingController(),
@@ -62,6 +77,9 @@ class AddCategoryState extends Equatable {
     CategoriesStatus? addCategoryStatus,
     String? errorAddCategory,
     String? urlImage,
+    CategoriesStatus? updateCategoryStatus,
+    String? errorUpdateCategory,
+    String? updateCategoryName,
     GlobalKey<FormState>? formKey,
     TextEditingController? controller,
   }) {
@@ -76,6 +94,9 @@ class AddCategoryState extends Equatable {
       errorUploadImage: errorUploadImage ?? this.errorUploadImage,
       formKey: formKey ?? this.formKey,
       controller: controller ?? this.controller,
+      updateCategoryStatus: updateCategoryStatus ?? this.updateCategoryStatus,
+      errorUpdateCategory: errorUpdateCategory ?? this.errorUpdateCategory,
+      updateCategoryName: updateCategoryName ?? this.updateCategoryName,
     );
   }
 
@@ -91,5 +112,8 @@ class AddCategoryState extends Equatable {
         controller,
         errorAddCategory,
         urlImage,
+        updateCategoryStatus,
+        errorUpdateCategory,
+        updateCategoryName,
       ];
 }

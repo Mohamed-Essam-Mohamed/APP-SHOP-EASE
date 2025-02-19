@@ -48,7 +48,7 @@ class AddCategorySection extends StatelessWidget {
                 context: context,
                 child: BlocProvider<AddCategoryCubit>(
                   create: (context) => sl<AddCategoryCubit>(),
-                  child: const BottomSheetCategory(),
+                  child: const BottomSheetAddCategory(),
                 ),
                 whenComplete: () {
                   context.read<GetAllCategoriesCubit>().getAllCategories();
@@ -64,8 +64,8 @@ class AddCategorySection extends StatelessWidget {
   }
 }
 
-class BottomSheetCategory extends StatelessWidget {
-  const BottomSheetCategory({super.key});
+class BottomSheetAddCategory extends StatelessWidget {
+  const BottomSheetAddCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +91,7 @@ class BottomSheetCategory extends StatelessWidget {
                 onTap: () async {
                   XFile? image = await AppImagePick.pickImage(context);
                   if (image == null) return;
-                  context.read<AddCategoryCubit>().updateCategoryImage(image);
+                  context.read<AddCategoryCubit>().selectCategoryImage(image);
                 },
                 child: Container(
                   height: 150.h,
